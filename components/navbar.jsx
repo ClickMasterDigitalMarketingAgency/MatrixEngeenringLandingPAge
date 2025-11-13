@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import {
   DropdownMenu,
@@ -15,21 +15,18 @@ import Image from 'next/image';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  const pathname = usePathname();
 
   const isActive = (path) => pathname === path;
 
   const servicesItems = [
+    { label: 'RF Planning and Optimization', path: '/services/rf-planning' },
     {
-      label: 'Telecom Equipment Installation and Commissioning',
-      path: '/services/telecom-equipment',
+      label: 'Buildings and Roads Construction',
+      path: '/services/construction',
     },
     {
       label: 'In Building Solution (IBS)',
@@ -39,31 +36,30 @@ export function Navbar() {
       label: 'Telecom Civil Infrastructure',
       path: '/services/civil-infrastructure',
     },
-    {
-      label: 'Buildings and Roads Construction',
-      path: '/services/construction',
-    },
-    { label: 'RF Planning and Optimization', path: '/services/rf-planning' },
     { label: 'Logistics and Warehousing', path: '/services/logistics' },
+    {
+      label: 'Telecom Equipment Installation and Commissioning',
+      path: '/services/telecom-equipment',
+    },
   ];
 
   const productsItems = [
-    { label: 'Solar Power Solutions', path: '/products/solar' },
-    { label: 'Telecom Cabinets', path: '/products/cabinets' },
     { label: 'Galvanized Towers', path: '/products/towers' },
-    { label: 'Cell on Wheel Towers (COW)', path: '/products/cow' },
     { label: 'Diesel Generators', path: '/products/generators' },
+    { label: 'Solar Power Solutions', path: '/products/solar' },
+    { label: 'Cell on Wheel Towers (COW)', path: '/products/cow' },
+    { label: 'Telecom Cabinets', path: '/products/cabinets' },
   ];
 
+  const handleMobileLinkClick = () => {
+    setMobileMenuOpen(false);
+    setMobileServicesOpen(false);
+    setMobileProductsOpen(false);
+  };
+
   return (
-    <nav
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-background backdrop-blur border-b border-border'
-          : 'bg-background backdrop-blur border-b border-border'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 ">
+    <nav className="sticky top-0 z-50 bg-background backdrop-blur border-b border-border">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -76,18 +72,10 @@ export function Navbar() {
               priority
             />
             <div className="ml-3 leading-tight">
-              <span
-                className={`text-2xl font-bold ${
-                  isScrolled ? 'text-gray-900' : 'text-primary'
-                }`}
-              >
+              <span className="text-2xl font-bold text-primary">
                 MATRIX ENGINEERING
               </span>
-              <div
-                className={`text-xs -mt-1 ${
-                  isScrolled ? 'text-gray-600' : 'text-foreground'
-                }`}
-              >
+              <div className="text-xs -mt-1 text-foreground">
                 PRIVATE LIMITED
               </div>
             </div>
@@ -98,11 +86,11 @@ export function Navbar() {
             <Link href="/">
               <Button
                 variant="ghost"
-                className={`${
+                className={
                   isActive('/')
                     ? 'text-primary'
                     : 'text-gray-800 hover:text-primary/50'
-                }`}
+                }
               >
                 HOME
               </Button>
@@ -111,11 +99,11 @@ export function Navbar() {
             <Link href="/about">
               <Button
                 variant="ghost"
-                className={`${
+                className={
                   isActive('/about')
                     ? 'text-primary'
                     : 'text-gray-800 hover:text-primary/50'
-                }`}
+                }
               >
                 ABOUT US
               </Button>
@@ -142,7 +130,7 @@ export function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className={`flex items-center text-gray-800 hover:text-primary/50`}
+                  className="flex items-center text-gray-800 hover:text-primary/50"
                 >
                   SERVICES <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
@@ -170,7 +158,7 @@ export function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className={`flex items-center text-gray-800 hover:text-primary/50`}
+                  className="flex items-center text-gray-800 hover:text-primary/50"
                 >
                   PRODUCTS <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
@@ -196,11 +184,11 @@ export function Navbar() {
             <Link href="/it-services">
               <Button
                 variant="ghost"
-                className={`${
+                className={
                   isActive('/it-services')
                     ? 'text-primary'
                     : 'text-gray-800 hover:text-primary/50'
-                }`}
+                }
               >
                 IT SERVICES
               </Button>
@@ -209,11 +197,11 @@ export function Navbar() {
             <Link href="/contact">
               <Button
                 variant="ghost"
-                className={`${
+                className={
                   isActive('/contact')
                     ? 'text-primary'
                     : 'text-gray-800 hover:text-primary/50'
-                }`}
+                }
               >
                 CONTACT US
               </Button>
@@ -222,8 +210,8 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden rounded-md p-2 transition text-gray-800 hover:bg-gray-100`}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden rounded-md p-2 transition text-gray-800 hover:bg-gray-100"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -236,31 +224,152 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 space-y-2">
-            {[
-              { label: 'HOME', path: '/' },
-              { label: 'ABOUT US', path: '/about' },
-              { label: 'SOLAR ENERGY', path: '/solar-energy' },
-              { label: 'IT SERVICES', path: '/it-services' },
-              { label: 'CONTACT US', path: '/contact' },
-            ].map(({ label, path }) => (
-              <Link
-                key={path}
-                href={path}
-                onClick={() => setMobileMenuOpen(false)}
+          <div className="lg:hidden py-4 border-t border-border space-y-2">
+            {/* HOME */}
+            <Link href="/" onClick={handleMobileLinkClick}>
+              <Button
+                variant="ghost"
+                className={`w-full justify-start ${
+                  isActive('/')
+                    ? 'text-primary'
+                    : 'text-gray-800 hover:text-primary/50'
+                }`}
               >
-                <Button
-                  variant="ghost"
-                  className={`w-full justify-start ${
-                    isActive(path)
-                      ? 'text-primary'
-                      : 'text-gray-800 hover:text-primary/50'
-                  }`}
-                >
-                  {label}
-                </Button>
-              </Link>
-            ))}
+                HOME
+              </Button>
+            </Link>
+
+            {/* ABOUT US */}
+            <Link href="/about" onClick={handleMobileLinkClick}>
+              <Button
+                variant="ghost"
+                className={`w-full justify-start ${
+                  isActive('/about')
+                    ? 'text-primary'
+                    : 'text-gray-800 hover:text-primary/50'
+                }`}
+              >
+                ABOUT US
+              </Button>
+            </Link>
+
+            {/* SOLAR ENERGY */}
+            <Link href="/solar-energy" onClick={handleMobileLinkClick}>
+              <Button
+                variant="ghost"
+                className={`w-full justify-start ${
+                  isActive('/solar-energy')
+                    ? 'text-primary'
+                    : 'text-gray-800 hover:text-primary/50'
+                }`}
+              >
+                SOLAR ENERGY
+              </Button>
+            </Link>
+
+            {/* SERVICES */}
+            <div className="space-y-1">
+              <button
+                className="flex w-full items-center justify-between text-left text-gray-800 hover:text-primary/50 px-4 py-2 rounded-md"
+                onClick={() => setMobileServicesOpen((prev) => !prev)}
+              >
+                <span className="text-sm font-medium">SERVICES</span>
+                {mobileServicesOpen ? (
+                  <ChevronUp className="h-4 w-4" />
+                ) : (
+                  <ChevronDown className="h-4 w-4" />
+                )}
+              </button>
+
+              {mobileServicesOpen && (
+                <div className="pl-4 space-y-1">
+                  {servicesItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      onClick={handleMobileLinkClick}
+                    >
+                      <Button
+                        variant="ghost"
+                        className={`w-full justify-start text-xs ${
+                          isActive(item.path)
+                            ? 'text-primary'
+                            : 'text-gray-800 hover:text-primary/50'
+                        }`}
+                      >
+                        {item.label}
+                      </Button>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* PRODUCTS */}
+            <div className="space-y-1">
+              <button
+                className="flex w-full items-center justify-between text-left text-gray-800 hover:text-primary/50 px-4  rounded-md"
+                onClick={() => setMobileProductsOpen((prev) => !prev)}
+              >
+                <span className="text-sm font-medium">PRODUCTS</span>
+                {mobileProductsOpen ? (
+                  <ChevronUp className="h-4 w-4" />
+                ) : (
+                  <ChevronDown className="h-4 w-4" />
+                )}
+              </button>
+
+              {mobileProductsOpen && (
+                <div className="pl-4 space-y-1">
+                  {productsItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      onClick={handleMobileLinkClick}
+                    >
+                      <Button
+                        variant="ghost"
+                        className={`w-full justify-start text-xs ${
+                          isActive(item.path)
+                            ? 'text-primary'
+                            : 'text-gray-800 hover:text-primary/50'
+                        }`}
+                      >
+                        {item.label}
+                      </Button>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* IT SERVICES */}
+            <Link href="/it-services" onClick={handleMobileLinkClick}>
+              <Button
+                variant="ghost"
+                className={`w-full justify-start ${
+                  isActive('/it-services')
+                    ? 'text-primary'
+                    : 'text-gray-800 hover:text-primary/50'
+                }`}
+              >
+                IT SERVICES
+              </Button>
+            </Link>
+
+            {/* CONTACT US */}
+            <Link href="/contact" onClick={handleMobileLinkClick}>
+              <Button
+                variant="ghost"
+                className={`w-full justify-start ${
+                  isActive('/contact')
+                    ? 'text-primary'
+                    : 'text-gray-800 hover:text-primary/50'
+                }`}
+              >
+                CONTACT US
+              </Button>
+            </Link>
           </div>
         )}
       </div>

@@ -67,13 +67,30 @@ export const Services = () => {
           onValueChange={setActiveTab}
           className="max-w-5xl mx-auto"
         >
-          {/* Tabs with spacing and proper wrapping */}
-          <TabsList className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-12 h-auto">
+          <TabsList
+            className="
+      w-full
+      flex flex-wrap justify-center gap-3
+      mb-12 h-auto
+      md:grid md:grid-cols-2
+      lg:grid-cols-4
+    "
+          >
             {serviceCategories.map((category) => (
               <TabsTrigger
                 key={category.id}
                 value={category.id}
-                className="data-[state=active]:bg-primary data-[state=active]:text-white py-3 px-4 text-sm text-center break-words leading-snug rounded-md"
+                className="
+          data-[state=active]:bg-primary
+          data-[state=active]:text-white
+          py-3 px-4
+          text-xs sm:text-sm
+          text-center
+          break-words
+          leading-snug
+          rounded-md
+          w-full
+        "
               >
                 {category.label}
               </TabsTrigger>
