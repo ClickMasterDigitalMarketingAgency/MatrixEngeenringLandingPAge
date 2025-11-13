@@ -1,0 +1,92 @@
+import Image from 'next/image';
+
+const TelecomEquipment = () => {
+  const expertise = [
+    ' Technical Site Surveys',
+    'Radio Base Station (RBS) Installation and exchange programs',
+    'Microwave link path design and planning',
+    'Microwave setup and activation',
+    'BSC/RNC system setup and Commissioning checklist',
+    'Core Power system deployment',
+  ];
+
+  return (
+    <div className="min-h-screen">
+      <main>
+        {/* Hero Banner */}
+        <section className="relative h-[250px] md:h-[300px] overflow-hidden">
+          <Image
+            src="/images/service-banner.png"
+            alt="Telecom Equipment Installation"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </section>
+
+        {/* Content Section */}
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl md:text-4xl text-primary text-center mb-12">
+                Telecom Equipment <strong>Installation</strong> &{' '}
+                <strong>Commissioning</strong>Services
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    Metrix Engineering specializes in delivering a full range of
+                    Telecom Equipment Installation and Commissioning Services.
+                    We efficiently provide a complete spectrum of field support,
+                    including initial technical studies, equipment transport,
+                    physical setup, integration testing, and final activation.
+                  </p>
+                  <p>
+                    We maintain the capability for rapid scaling to match
+                    customer needs. We rely on a substantial internal resource
+                    pool of experienced, multi-vendor trained technical staff
+                    from the telecom sector, ready to perform the following
+                    necessary activities.
+                  </p>
+                </div>
+
+                <div className="flex justify-center">
+                  <div className="relative w-full max-w-md h-72  overflow-hidden shadow-lg">
+                    <Image
+                      src="/images/it tower.jpg"
+                      alt="Telecom Tower Installation"
+                      fill
+                      className="object-cover object-center"
+                      priority
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Expertise Section */}
+              <div className="mt-12">
+                <h2 className="text-2xl font-bold mb-6">
+                  Major areas of <span className="text-primary">expertise</span>{' '}
+                  include
+                </h2>
+                <div className="space-y-3">
+                  {expertise.map((item, index) => (
+                    <div key={index} className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
+                        {index + 1}
+                      </div>
+                      <p className="text-foreground">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+};
+
+export default TelecomEquipment;
