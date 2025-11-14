@@ -46,7 +46,6 @@ const Construction = () => {
             className="object-cover object-center"
             priority
           />
-        
         </section>
 
         {/* Content Section */}
@@ -60,12 +59,12 @@ const Construction = () => {
               <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Metrix Engineering is an established Civil Works Design and
-                    engineering company. We approach all Buildings and Roads
-                    Construction with both technical reliability and visual
-                    consideration, ensuring projects function effectively. We
-                    draw upon the varied skills and work history of our team to
-                    serve you with high dependability.
+                    Metrix Engineering Services is an established Civil Works
+                    Design and engineering company. We approach all Buildings
+                    and Roads Construction with both technical reliability and
+                    visual consideration, ensuring projects function
+                    effectively. We draw upon the varied skills and work history
+                    of our team to serve you with high dependability.
                   </p>
                   <p>
                     With years of experience covering a wide range of projects,
@@ -106,8 +105,8 @@ const Construction = () => {
               {/* Expertise Section */}
               <div className="mt-16">
                 <h3 className="text-2xl md:text-3xl  mb-8 text-primary">
-                  Metrix Engineering Offers Services in Road & Infrastructure
-                  Sector:
+                  Metrix Engineering Services Offers Services in Road &
+                  Infrastructure Sector:
                 </h3>
                 <div className="space-y-3">
                   {expertise.map((item, index) => (
@@ -124,7 +123,8 @@ const Construction = () => {
               {/* Expertise Section */}
               <div className="mt-16">
                 <h3 className="text-2xl md:text-3xl  mb-8 text-primary">
-                  Metrix Engineering Offers Services in Buildings Sector:
+                  Metrix Engineering Services Offers Services in Buildings
+                  Sector:
                 </h3>
                 <div className="space-y-3">
                   {services.map((item, index) => (

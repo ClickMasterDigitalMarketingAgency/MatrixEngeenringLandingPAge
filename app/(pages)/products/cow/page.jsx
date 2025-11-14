@@ -21,18 +21,18 @@ const CellOnWheelTowers = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
-                Cell on <span className="text-primary">Wheel Towers { " "}</span>(COW)
+                Cell on <span className="text-primary">Wheel Towers </span>(COW)
               </h2>
 
               <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Metrix Engineering is a leading manufacturer of portable and
-                    fixed tower structures. These systems are used in many
-                    sectors to provide mobile wireless communications solutions.
-                    We build and perform the Commissioning checklist for Cell on
-                    Wheel Towers (COW) units and site-specific fixed structures
-                    based on customer requirements.
+                    Metrix Engineering Services is a leading manufacturer of
+                    portable and fixed tower structures. These systems are used
+                    in many sectors to provide mobile wireless communications
+                    solutions. We build and perform the Commissioning checklist
+                    for Cell on Wheel Towers (COW) units and site-specific fixed
+                    structures based on customer requirements.
                   </p>
                   <p>
                     We are a specialized fabricator; we operate an internal CAD
@@ -43,11 +43,12 @@ const CellOnWheelTowers = () => {
                     Towers to perform reliably when needed most.
                   </p>
                   <p>
-                    Metrix Engineering COWs are well-equipped with the necessary
-                    systems for mobile site operation. We use our extensive
-                    experience in the Telecom Industry to build systems that are
-                    operator-friendly, rigid, and strong enough to meet all the
-                    parameters required for a temporary cell site.
+                    Metrix Engineering Services COWs are well-equipped with the
+                    necessary systems for mobile site operation. We use our
+                    extensive experience in the Telecom Industry to build
+                    systems that are operator-friendly, rigid, and strong enough
+                    to meet all the parameters required for a temporary cell
+                    site.
                   </p>
                 </div>
 
@@ -67,8 +68,8 @@ const CellOnWheelTowers = () => {
 
                 <div className="space-y-4 text-muted-foreground mb-12 md:col-span-2">
                   <p>
-                    Metrix Engineering mobile cellular site features include:
-                    Single-person operation, full integration to allow
+                    Metrix Engineering Services mobile cellular site features
+                    include: Single-person operation, full integration to allow
                     installation and setup to be completed within 2 hours upon
                     arrival. The articulate mast design, with guy wires,
                     features multiple antenna capacity up to 35-meter height.

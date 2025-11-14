@@ -27,9 +27,9 @@ const Logistics = () => {
               <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Metrix Engineering has significant experience in this area,
-                    offering cost-effective Supply Chain Management and
-                    customized logistics solutions based on specific client
+                    Metrix Engineering Services has significant experience in
+                    this area, offering cost-effective Supply Chain Management
+                    and customized logistics solutions based on specific client
                     needs. With an internal fleet that includes small, medium,
                     and large Equipment Transport vehicles, our team is
                     committed to delivering products and materials reliably and

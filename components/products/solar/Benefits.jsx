@@ -15,44 +15,44 @@ import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 
 const Benefits = () => {
-   const items = [
-     {
-       icon: DollarSign,
-       title: 'Reduced Operating Expense',
-       desc: 'A PV system delivers power 24/7/365 at a much lower cost than extending the grid or running diesel gensets, reducing LCOE for telecom sites.',
-     },
-     {
-       icon: MapPin,
-       title: 'Suitable for Remote Sites',
-       desc: 'Off-grid power and battery backup systems engineered for rural and isolated infrastructure locations.',
-     },
-     {
-       icon: Clock,
-       title: 'Quick Deployment',
-       desc: 'Modular solar power solutions for towers that install fast to meet aggressive rollout timelines.',
-     },
-     {
-       icon: Recycle,
-       title: 'Built to Last',
-       desc: 'Rust-resistant, field-ready hardware designed to withstand harsh environmental conditions.',
-     },
-     {
-       icon: Zap,
-       title: 'Switch to Clean Energy',
-       desc: 'Standardized, fire-resistant storage with weather-hardening to maximize system longevity.',
-     },
-     {
-       icon: Power,
-       title: 'Commitment to Clean Energy',
-       desc: 'Replace combustion engines to meet sustainability targets and climate-impact goals.',
-     },
-     {
-       icon: Lightbulb,
-       title: 'Consistent Power Supply',
-       desc: 'Integrated solar PV, robust batteries, and generator protection keep power steady during grid failures.',
-     },
+  const items = [
+    {
+      icon: DollarSign,
+      title: 'Reduced Operating Expense',
+      desc: 'A PV system delivers power 24/7/365 at a much lower cost than extending the grid or running diesel gensets, reducing LCOE for telecom sites.',
+    },
+    {
+      icon: MapPin,
+      title: 'Suitable for Remote Sites',
+      desc: 'Off-grid power and battery backup systems engineered for rural and isolated infrastructure locations.',
+    },
+    {
+      icon: Clock,
+      title: 'Quick Deployment',
+      desc: 'Modular solar power solutions for towers that install fast to meet aggressive rollout timelines.',
+    },
+    {
+      icon: Recycle,
+      title: 'Built to Last',
+      desc: 'Rust-resistant, field-ready hardware designed to withstand harsh environmental conditions.',
+    },
+    {
+      icon: Zap,
+      title: 'Switch to Clean Energy',
+      desc: 'Standardized, fire-resistant storage with weather-hardening to maximize system longevity.',
+    },
+    {
+      icon: Power,
+      title: 'Commitment to Clean Energy',
+      desc: 'Replace combustion engines to meet sustainability targets and climate-impact goals.',
+    },
+    {
+      icon: Lightbulb,
+      title: 'Consistent Power Supply',
+      desc: 'Integrated solar PV, robust batteries, and generator protection keep power steady during grid failures.',
+    },
   ];
-  
+
   return (
     <div className="min-h-screen bg-background">
       {/* Benefits Section */}
@@ -97,8 +97,8 @@ const Benefits = () => {
           <div className="text-center mb-12">
             <div className="w-16 h-1 bg-primary mx-auto mb-8" />
             <h2 className="text-3xl md:text-4xl font-bold text-foreground ">
-              Telecom Site Energy Solutions by {" "}
-              <span className="text-primary">Metrix Engineering</span>
+              Telecom Site Energy Solutions by{' '}
+              <span className="text-primary">Metrix Engineering Services</span>
             </h2>
           </div>
 
@@ -108,7 +108,7 @@ const Benefits = () => {
                 src: '/images/telecom-offgrid.jpg',
                 alt: 'Off-grid telecom towers',
                 title: 'Remote Off-Grid Towers',
-                desc: "Expanding rural coverage requires Telecom Tower Construction in areas lacking power grid access. Metrix Engineering's standalone Photovoltaic(PV) System solutions can be rapidly deployed anywhere for a continuous power supply.Compared to operating a Diesel Generator or extending grid infrastructure, our solutions are highly cost- efficient.",
+                desc: "Expanding rural coverage requires Telecom Tower Construction in areas lacking power grid access. Metrix Engineering Services's standalone Photovoltaic(PV) System solutions can be rapidly deployed anywhere for a continuous power supply.Compared to operating a Diesel Generator or extending grid infrastructure, our solutions are highly cost- efficient.",
               },
               {
                 src: '/images/telecom-grid.jpg',
@@ -161,8 +161,8 @@ const Benefits = () => {
           </div>
 
           <p className=" text-base md:text-[17px] leading-relaxed text-muted-foreground mb-8  mx-auto">
-            Metrix Engineering offers Solar Power Solutions for Telecom Towers
-            and infrastructure across both Off-Grid and grid-connected
+            Metrix Engineering Services offers Solar Power Solutions for Telecom
+            Towers and infrastructure across both Off-Grid and grid-connected
             environments. We specialize in system design, engineering, supply,
             and ongoing support for integrated solar, Battery Backup Systems,
             and generator backup systems. We simplify deployment and reduce
@@ -174,16 +174,16 @@ const Benefits = () => {
             {[
               {
                 title: 'Solar Power System Project Development & Consulting',
-                desc: 'Metrix Engineering guides clients through all stages of the solar system lifecycle. From an Energy Audit and financial analysis, Metrix Engineering clarifies the complex requirements of solar power system for telecom towers for government bodies, Telecom Carriers, and enterprise clients.',
+                desc: 'Metrix Engineering Services guides clients through all stages of the solar system lifecycle. From an Energy Audit and financial analysis, Metrix Engineering Services clarifies the complex requirements of solar power system for telecom towers for government bodies, Telecom Carriers, and enterprise clients.',
               },
               {
                 title:
                   'Solar Power System Structure Fabrication & Installation',
-                desc: 'Reduce costs, save time, and avoid issues by partnering with Metrix Engineering for all aspects of physical system assembly and setup. Our solar services make the construction process controlled and predictable. Our team of certified fabricators, engineers, and installers provides the highest quality Turnkey Telecom Infrastructure Provider services for both Off-Grid and grid-connected deployments.',
+                desc: 'Reduce costs, save time, and avoid issues by partnering with Metrix Engineering Services for all aspects of physical system assembly and setup. Our solar services make the construction process controlled and predictable. Our team of certified fabricators, engineers, and installers provides the highest quality Turnkey Telecom Infrastructure Provider services for both Off-Grid and grid-connected deployments.',
               },
               {
                 title: 'Solar Power System Operations & Maintenance',
-                desc: 'Metrix Engineering provides a complete solution for solar power projects. After the successful installation of your system, our Operations & Maintenance (O&M) packages ensure that your Sustainable Energy investment performs reliably. We customize our O&M plans to meet each client’s operational requirements and budget.',
+                desc: 'Metrix Engineering Services provides a complete solution for solar power projects. After the successful installation of your system, our Operations & Maintenance (O&M) packages ensure that your Sustainable Energy investment performs reliably. We customize our O&M plans to meet each client’s operational requirements and budget.',
               },
             ].map(({ title, desc }) => (
               <div key={title}>
@@ -205,14 +205,14 @@ const Benefits = () => {
           <div className="text-center mb-12">
             <div className="w-16 h-1 bg-primary mx-auto mb-8" />
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Metrix Engineering End-to-End {' '}
+              Metrix Engineering Services End-to-End{' '}
               <span className="text-primary">Solar Energy</span> Services
             </h2>
           </div>
 
           <p className="text-center text-base md:text-[17px] leading-relaxed text-muted-foreground mb-12">
-            Metrix Engineering makes obtaining clean power and reducing costs
-            simple and efficient for our clients. Our end to end telecom
+            Metrix Engineering Services makes obtaining clean power and reducing
+            costs simple and efficient for our clients. Our end to end telecom
             services approach covers every aspect of your project.
           </p>
 

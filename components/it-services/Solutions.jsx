@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 const solutions = [
   {
@@ -37,7 +37,7 @@ const solutions = [
     title: 'User Management & Auditing',
     description:
       'Implement centralized user management, provisioning, and de-provisioning, ensuring full visibility and access control for compliance and security auditing.',
-    icons: ['🌐' , '🔒', '📱'],
+    icons: ['🌐', '🔒', '📱'],
   },
 ];
 
@@ -51,8 +51,8 @@ export const Solutions = () => {
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-4"></div>
           <p className="text-muted-foreground">
-            Metrix Engineering has developed several specialized IT security and
-            digital solutions for our clients, as listed below.
+            Metrix Engineering Services has developed several specialized IT
+            security and digital solutions for our clients, as listed below.
           </p>
         </div>
 

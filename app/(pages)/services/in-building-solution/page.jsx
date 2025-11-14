@@ -51,7 +51,6 @@ const BuildingSolutions = () => {
             className="object-cover object-center"
             priority
           />
-         
         </section>
 
         {/* Content Section */}
@@ -65,8 +64,8 @@ const BuildingSolutions = () => {
               <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Metrix Engineering has significant experience in the
-                    planning, design, setup, Commissioning checklist, and
+                    Metrix Engineering Services has significant experience in
+                    the planning, design, setup, Commissioning checklist, and
                     refinement of comprehensive In-Building Coverage Solutions
                     (IBS), including Distributed Antenna System (DAS)
                     deployments for Indoor Network Optimization and network
@@ -99,16 +98,17 @@ const BuildingSolutions = () => {
 
                 <div className="space-y-4 text-muted-foreground mb-12 md:col-span-2">
                   <p>
-                    Metrix Engineering operates as an end to end telecom
-                    services integrator, providing a full portfolio of products
-                    for both passive and active system solutions.
+                    Metrix Engineering Services operates as an end to end
+                    telecom services integrator, providing a full portfolio of
+                    products for both passive and active system solutions.
                   </p>
                   <p>
                     By applying the most current radio planning tools and
-                    high-quality materials, Metrix Engineering ensures the most
-                    effective, cost-efficient solutions for our customers.
-                    Metrix Engineering maintains significant experience in the
-                    physical deployment of in-building coverage solutions
+                    high-quality materials, Metrix Engineering Services ensures
+                    the most effective, cost-efficient solutions for our
+                    customers. Metrix Engineering Services maintains significant
+                    experience in the physical deployment of in-building
+                    coverage solutions
                   </p>
                 </div>
               </div>
@@ -134,9 +134,9 @@ const BuildingSolutions = () => {
               {/* Services Section */}
               <div className="mt-16">
                 <p className="text-muted-foreground mb-8">
-                  Metrix Engineering holds the necessary knowledge and technical
-                  skills to successfully manage the complete IBS/DAS project
-                  cycle from planning to execution:
+                  Metrix Engineering Services holds the necessary knowledge and
+                  technical skills to successfully manage the complete IBS/DAS
+                  project cycle from planning to execution:
                 </p>
                 <div className="grid md:grid-cols-3 gap-6">
                   {services.map((service, index) => (

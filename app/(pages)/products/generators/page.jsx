@@ -51,12 +51,12 @@ const DiselGenerators = () => {
                     continuous operation.
                   </p>
                   <p>
-                    Metrix Engineering can provide Diesel Generator systems in a
-                    short timeframe across all major Pakistan cities, along with
-                    complete installation, operation, and Operations &
-                    Maintenance (O&M) services. Our solutions support critical
-                    power needs, reducing the risk of downtime at remote or
-                    grid-unstable sites.
+                    Metrix Engineering Services can provide Diesel Generator
+                    systems in a short timeframe across all major Pakistan
+                    cities, along with complete installation, operation, and
+                    Operations & Maintenance (O&M) services. Our solutions
+                    support critical power needs, reducing the risk of downtime
+                    at remote or grid-unstable sites.
                   </p>
                 </div>
 

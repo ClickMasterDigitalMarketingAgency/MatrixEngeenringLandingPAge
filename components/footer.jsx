@@ -67,7 +67,7 @@ export function Footer() {
               />
               <div>
                 <span className="text-2xl font-bold text-primary">
-                  MATRIX ENGINEERING
+                  MATRIX ENGINEERING SERVICES
                 </span>
                 <div className="text-xs  -mt-1">PRIVATE LIMITED</div>
               </div>

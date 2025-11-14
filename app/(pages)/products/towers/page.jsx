@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 const GalvanizedTelecom = () => {
   const services = [
-   "Mechanical Fabrication for Industrial Structures and Shelters",
-"Fabrication of Self-Supporting Towers of any required height",
-"Fabrication of security sheds, Cable Bridges, and Antenna Mounts",
-"Fabrication of various Steel Trusses and Girders",
-"In-house Hot Dip Galvanizing Facility",
-"Fabrication of Cell on Wheel (COW) Towers frames and components",
-"Fabrication of integrated Solar Structures",
+    'Mechanical Fabrication for Industrial Structures and Shelters',
+    'Fabrication of Self-Supporting Towers of any required height',
+    'Fabrication of security sheds, Cable Bridges, and Antenna Mounts',
+    'Fabrication of various Steel Trusses and Girders',
+    'In-house Hot Dip Galvanizing Facility',
+    'Fabrication of Cell on Wheel (COW) Towers frames and components',
+    'Fabrication of integrated Solar Structures',
   ];
 
   return (
@@ -36,7 +36,7 @@ const GalvanizedTelecom = () => {
               </h1>
               <div className="space-y-4 text-foreground/80 leading-relaxed">
                 <p>
-                  Metrix Engineering manufactures numerous value-added
+                  Metrix Engineering Services manufactures numerous value-added
                   Galvanized Telecom Towers and Steel Structures products, such
                   as lattice towers, solar structures, pole towers, and monopole
                   towers. We supply structural components essential for mobile

@@ -33,7 +33,6 @@ export default function Cabinets() {
       name: 'Custom Indoor Telecom Cabinets',
       logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/1000-1500W-DC-Air-Conditioner-rotated.jpg?fit=1278%2C1706&ssl=1',
     },
-  
   ];
 
   const clients = [
@@ -114,12 +113,12 @@ export default function Cabinets() {
             <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Metrix Engineering, in partnership with a leading global
-                  supplier, is a key provider of all types of Telecom Cabinets
-                  Pakistan. We manufacture all required types of indoor and
-                  outdoor telecom cabinets and temperature control solutions for
-                  base station use. We focus on research, design, and sales of
-                  network equipment, and our skilled technical team ensures
+                  Metrix Engineering Services, in partnership with a leading
+                  global supplier, is a key provider of all types of Telecom
+                  Cabinets Pakistan. We manufacture all required types of indoor
+                  and outdoor telecom cabinets and temperature control solutions
+                  for base station use. We focus on research, design, and sales
+                  of network equipment, and our skilled technical team ensures
                   products meet specific needs accurately.
                 </p>
                 <p>

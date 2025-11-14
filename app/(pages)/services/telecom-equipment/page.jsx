@@ -36,11 +36,12 @@ const TelecomEquipment = () => {
               <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Metrix Engineering specializes in delivering a full range of
-                    Telecom Equipment Installation and Commissioning Services.
-                    We efficiently provide a complete spectrum of field support,
-                    including initial technical studies, equipment transport,
-                    physical setup, integration testing, and final activation.
+                    Metrix Engineering Services specializes in delivering a full
+                    range of Telecom Equipment Installation and Commissioning
+                    Services. We efficiently provide a complete spectrum of
+                    field support, including initial technical studies,
+                    equipment transport, physical setup, integration testing,
+                    and final activation.
                   </p>
                   <p>
                     We maintain the capability for rapid scaling to match

@@ -37,9 +37,9 @@ export const Products = () => {
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-4" />
           <p className="text-muted-foreground">
-            Metrix Engineering deploys and integrates several cutting-edge
-            security products, including global platforms like IBM, as listed
-            below.
+            Metrix Engineering Services deploys and integrates several
+            cutting-edge security products, including global platforms like IBM,
+            as listed below.
           </p>
         </div>
 

@@ -73,7 +73,7 @@ export function Navbar() {
             />
             <div className="ml-3 leading-tight">
               <span className="text-2xl font-bold text-primary">
-                MATRIX ENGINEERING
+                MATRIX ENGINEERING SERVICES
               </span>
               <div className="text-xs -mt-1 text-foreground">
                 PRIVATE LIMITED
@@ -224,7 +224,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border space-y-2">
+          <div className="lg:hidden absolute top-20 left-0 right-0 bg-background border-t border-border py-4 space-y-2 z-50">
             {/* HOME */}
             <Link href="/" onClick={handleMobileLinkClick}>
               <Button
@@ -308,7 +308,7 @@ export function Navbar() {
             {/* PRODUCTS */}
             <div className="space-y-1">
               <button
-                className="flex w-full items-center justify-between text-left text-gray-800 hover:text-primary/50 px-4  rounded-md"
+                className="flex w-full items-center justify-between text-left text-gray-800 hover:text-primary/50 px-4 pb-1 rounded-md"
                 onClick={() => setMobileProductsOpen((prev) => !prev)}
               >
                 <span className="text-sm font-medium">PRODUCTS</span>
