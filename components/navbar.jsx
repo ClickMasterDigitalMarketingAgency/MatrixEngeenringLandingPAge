@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
@@ -17,10 +17,27 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const navbarRef = useRef(null);
 
   const pathname = usePathname();
 
   const isActive = (path) => pathname === path;
+
+  // Close navbar when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+        setMobileMenuOpen(false);
+        setMobileServicesOpen(false);
+        setMobileProductsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const servicesItems = [
     { label: 'RF Planning and Optimization', path: '/services/rf-planning' },
@@ -58,25 +75,43 @@ export function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background backdrop-blur border-b border-border">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+    <nav
+      ref={navbarRef}
+      className="sticky top-0 z-50 bg-background backdrop-blur border-b border-border"
+    >
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center flex-shrink-0">
             <Image
               src="/logo.png"
               alt="Industrial steel manufacturing"
               width={64}
               height={64}
-              className="w-16 h-auto object-cover drop-shadow-sm"
+              className="w-12 h-12 sm:w-16 sm:h-16 object-cover drop-shadow-sm"
               priority
             />
-            <div className="ml-3 leading-tight">
-              <span className="text-2xl font-bold text-primary">
-                MATRIX ENGINEERING SERVICES
-              </span>
-              <div className="text-xs -mt-1 text-foreground">
-                PRIVATE LIMITED
+            <div className="ml-2 sm:ml-3 leading-tight">
+              {/* Single line for desktop, two lines for mobile */}
+              <div className="hidden lg:block">
+                <span className="text-xl font-bold text-primary">
+                  MATRIX ENGINEERING SERVICES
+                </span>
+                <div className="text-xs -mt-1 text-foreground">
+                  PRIVATE LIMITED
+                </div>
+              </div>
+              {/* Two lines for mobile and tablet */}
+              <div className="lg:hidden">
+                <span className="text-lg font-bold text-primary block">
+                  MATRIX ENGINEERING
+                </span>
+                <span className="text-lg font-bold text-primary block -mt-1">
+                  SERVICES
+                </span>
+                <div className="text-xs -mt-1 text-foreground">
+                  PRIVATE LIMITED
+                </div>
               </div>
             </div>
           </Link>
@@ -86,11 +121,11 @@ export function Navbar() {
             <Link href="/">
               <Button
                 variant="ghost"
-                className={
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive('/')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
-                }
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
+                }`}
               >
                 HOME
               </Button>
@@ -99,11 +134,11 @@ export function Navbar() {
             <Link href="/about">
               <Button
                 variant="ghost"
-                className={
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive('/about')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
-                }
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
+                }`}
               >
                 ABOUT US
               </Button>
@@ -112,10 +147,10 @@ export function Navbar() {
             <Link href="/solar-energy">
               <Button
                 variant="ghost"
-                className={`flex items-center ${
+                className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive('/solar-energy')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
                 }`}
               >
                 SOLAR ENERGY
@@ -130,7 +165,7 @@ export function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="flex items-center text-gray-800 hover:text-primary/50"
+                  className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-primary hover:text-white transition-colors"
                 >
                   SERVICES <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
@@ -140,10 +175,10 @@ export function Navbar() {
                   <DropdownMenuItem key={item.path} asChild>
                     <Link
                       href={item.path}
-                      className={`w-full cursor-pointer ${
+                      className={`w-full cursor-pointer px-3 py-2 rounded-md text-sm transition-colors ${
                         isActive(item.path)
-                          ? 'text-primary'
-                          : 'hover:text-primary/50'
+                          ? 'text-primary bg-primary/10'
+                          : 'hover:bg-primary hover:text-white'
                       }`}
                     >
                       {item.label}
@@ -158,7 +193,7 @@ export function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="flex items-center text-gray-800 hover:text-primary/50"
+                  className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-primary hover:text-white transition-colors"
                 >
                   PRODUCTS <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
@@ -168,10 +203,10 @@ export function Navbar() {
                   <DropdownMenuItem key={item.path} asChild>
                     <Link
                       href={item.path}
-                      className={`w-full cursor-pointer ${
+                      className={`w-full cursor-pointer px-3 py-2 rounded-md text-sm transition-colors ${
                         isActive(item.path)
-                          ? 'text-primary'
-                          : 'hover:text-primary/50'
+                          ? 'text-primary bg-primary/10'
+                          : 'hover:bg-primary hover:text-white'
                       }`}
                     >
                       {item.label}
@@ -184,11 +219,11 @@ export function Navbar() {
             <Link href="/it-services">
               <Button
                 variant="ghost"
-                className={
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive('/it-services')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
-                }
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
+                }`}
               >
                 IT SERVICES
               </Button>
@@ -197,20 +232,34 @@ export function Navbar() {
             <Link href="/contact">
               <Button
                 variant="ghost"
-                className={
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive('/contact')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
-                }
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
+                }`}
               >
                 CONTACT US
+              </Button>
+            </Link>
+
+            {/* LOGIN */}
+            <Link href="/login">
+              <Button
+                variant="ghost"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  isActive('/login')
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
+                }`}
+              >
+                LOGIN
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden rounded-md p-2 transition text-gray-800 hover:bg-gray-100"
+            className="lg:hidden rounded-md p-2 transition text-gray-800 hover:bg-primary hover:text-white"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
           >
@@ -224,15 +273,15 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-20 left-0 right-0 bg-background border-t border-border py-4 space-y-2 z-50">
+          <div className="lg:hidden absolute top-16 sm:top-20 left-0 right-0 bg-background border-t border-border py-2 space-y-1 z-50 max-h-[80vh] overflow-y-auto">
             {/* HOME */}
             <Link href="/" onClick={handleMobileLinkClick}>
               <Button
                 variant="ghost"
-                className={`w-full justify-start ${
+                className={`w-full justify-start px-4 py-3 rounded-none text-sm font-medium transition-colors ${
                   isActive('/')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
                 }`}
               >
                 HOME
@@ -243,10 +292,10 @@ export function Navbar() {
             <Link href="/about" onClick={handleMobileLinkClick}>
               <Button
                 variant="ghost"
-                className={`w-full justify-start ${
+                className={`w-full justify-start px-4 py-3 rounded-none text-sm font-medium transition-colors ${
                   isActive('/about')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
                 }`}
               >
                 ABOUT US
@@ -257,10 +306,10 @@ export function Navbar() {
             <Link href="/solar-energy" onClick={handleMobileLinkClick}>
               <Button
                 variant="ghost"
-                className={`w-full justify-start ${
+                className={`w-full justify-start px-4 py-3 rounded-none text-sm font-medium transition-colors ${
                   isActive('/solar-energy')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
                 }`}
               >
                 SOLAR ENERGY
@@ -270,10 +319,10 @@ export function Navbar() {
             {/* SERVICES */}
             <div className="space-y-1">
               <button
-                className="flex w-full items-center justify-between text-left text-gray-800 hover:text-primary/50 px-4 py-2 rounded-md"
+                className="flex w-full items-center justify-between text-left px-4 py-3 rounded-none text-sm font-medium text-gray-800 hover:bg-primary hover:text-white transition-colors"
                 onClick={() => setMobileServicesOpen((prev) => !prev)}
               >
-                <span className="text-sm font-medium">SERVICES</span>
+                <span>SERVICES</span>
                 {mobileServicesOpen ? (
                   <ChevronUp className="h-4 w-4" />
                 ) : (
@@ -282,7 +331,7 @@ export function Navbar() {
               </button>
 
               {mobileServicesOpen && (
-                <div className="pl-4 space-y-1">
+                <div className="space-y-1 bg-gray-50/50">
                   {servicesItems.map((item) => (
                     <Link
                       key={item.path}
@@ -291,10 +340,10 @@ export function Navbar() {
                     >
                       <Button
                         variant="ghost"
-                        className={`w-full justify-start text-xs ${
+                        className={`w-full justify-start px-6 py-2 rounded-none text-xs font-medium transition-colors ${
                           isActive(item.path)
-                            ? 'text-primary'
-                            : 'text-gray-800 hover:text-primary/50'
+                            ? 'text-primary bg-primary/10'
+                            : 'text-gray-800 hover:bg-primary hover:text-white'
                         }`}
                       >
                         {item.label}
@@ -308,10 +357,10 @@ export function Navbar() {
             {/* PRODUCTS */}
             <div className="space-y-1">
               <button
-                className="flex w-full items-center justify-between text-left text-gray-800 hover:text-primary/50 px-4 pb-1 rounded-md"
+                className="flex w-full items-center justify-between text-left px-4 py-3 rounded-none text-sm font-medium text-gray-800 hover:bg-primary hover:text-white transition-colors"
                 onClick={() => setMobileProductsOpen((prev) => !prev)}
               >
-                <span className="text-sm font-medium">PRODUCTS</span>
+                <span>PRODUCTS</span>
                 {mobileProductsOpen ? (
                   <ChevronUp className="h-4 w-4" />
                 ) : (
@@ -320,7 +369,7 @@ export function Navbar() {
               </button>
 
               {mobileProductsOpen && (
-                <div className="pl-4 space-y-1">
+                <div className="space-y-1 bg-gray-50/50">
                   {productsItems.map((item) => (
                     <Link
                       key={item.path}
@@ -329,10 +378,10 @@ export function Navbar() {
                     >
                       <Button
                         variant="ghost"
-                        className={`w-full justify-start text-xs ${
+                        className={`w-full justify-start px-6 py-2 rounded-none text-xs font-medium transition-colors ${
                           isActive(item.path)
-                            ? 'text-primary'
-                            : 'text-gray-800 hover:text-primary/50'
+                            ? 'text-primary bg-primary/10'
+                            : 'text-gray-800 hover:bg-primary hover:text-white'
                         }`}
                       >
                         {item.label}
@@ -347,10 +396,10 @@ export function Navbar() {
             <Link href="/it-services" onClick={handleMobileLinkClick}>
               <Button
                 variant="ghost"
-                className={`w-full justify-start ${
+                className={`w-full justify-start px-4 py-3 rounded-none text-sm font-medium transition-colors ${
                   isActive('/it-services')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
                 }`}
               >
                 IT SERVICES
@@ -361,13 +410,27 @@ export function Navbar() {
             <Link href="/contact" onClick={handleMobileLinkClick}>
               <Button
                 variant="ghost"
-                className={`w-full justify-start ${
+                className={`w-full justify-start px-4 py-3 rounded-none text-sm font-medium transition-colors ${
                   isActive('/contact')
-                    ? 'text-primary'
-                    : 'text-gray-800 hover:text-primary/50'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
                 }`}
               >
                 CONTACT US
+              </Button>
+            </Link>
+
+            {/* LOGIN */}
+            <Link href="/login" onClick={handleMobileLinkClick}>
+              <Button
+                variant="ghost"
+                className={`w-full justify-start px-4 py-3 rounded-none text-sm font-medium transition-colors ${
+                  isActive('/login')
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-800 hover:bg-primary hover:text-white'
+                }`}
+              >
+                LOGIN
               </Button>
             </Link>
           </div>
