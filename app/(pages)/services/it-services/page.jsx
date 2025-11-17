@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-import Hero from '@/components/home/Hero';
-import Stats from '@/components/home/Stats';
-import Services from '@/components/home/Services';
-import Clients from '@/components/home/Clients';
-import Location from '@/components/home/Location';
-import Products from '@/components/home/Products';
+import { Hero } from '@/components/it-services/Hero';
+import { Solutions } from '@/components/it-services/Solutions';
+import { Services } from '@/components/it-services/Services';
+import { Demo } from '@/components/it-services/Demo';
+import { Products } from '@/components/it-services/Products';
+import { Partners } from '@/components/it-services/Partners';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
 };
 
-export default function Home() {
+const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -32,7 +32,7 @@ export default function Home() {
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
-        <Stats />
+        <Solutions />
       </motion.div>
 
       <motion.div
@@ -59,7 +59,7 @@ export default function Home() {
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
-        <Clients />
+        <Demo />
       </motion.div>
 
       <motion.div
@@ -68,8 +68,10 @@ export default function Home() {
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
-        <Location />
+        <Partners />
       </motion.div>
     </div>
   );
-}
+};
+
+export default Index;

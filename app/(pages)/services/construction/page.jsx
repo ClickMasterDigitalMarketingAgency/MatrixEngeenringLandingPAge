@@ -1,11 +1,17 @@
 'use client';
 
+
+import { motion } from 'framer-motion';
 import { Building2, Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
 const Construction = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+};
 
   const expertise = [
     ' Earthworks and Material Movement',
@@ -35,113 +41,120 @@ const Construction = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      <main>
-        {/* Hero Banner */}
-        <section className="relative w-full h-[250px] md:h-[350px] overflow-hidden">
-          <Image
-            src="/images/construction.png"
-            alt="Telecom Equipment Installation"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-        </section>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={sectionVariants}
+    >
+      <div className="min-h-screen">
+        <main>
+          {/* Hero Banner */}
+          <section className="relative w-full h-[250px] md:h-[350px] overflow-hidden">
+            <Image
+              src="/images/construction.png"
+              alt="Telecom Equipment Installation"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </section>
 
-        {/* Content Section */}
-        <section className="py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl md:text-4xl  text-center mb-12 text-primary font-medium">
-                Infrastructure Construction Services
-              </h2>
+          {/* Content Section */}
+          <section className="py-16 bg-background">
+            <div className="container mx-auto px-4">
+              <div className="max-w-6xl mx-auto">
+                <h2 className="text-3xl md:text-4xl  text-center mb-12 text-primary font-medium">
+                  Infrastructure Construction Services
+                </h2>
 
-              <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Metrix Engineering Services is an established Civil Works
-                    Design and engineering company. We approach all Buildings
-                    and Roads Construction with both technical reliability and
-                    visual consideration, ensuring projects function
-                    effectively. We draw upon the varied skills and work history
-                    of our team to serve you with high dependability.
-                  </p>
-                  <p>
-                    With years of experience covering a wide range of projects,
-                    from Dams to Highways and Buildings, we are prepared for any
-                    task. Our team is accustomed to working in diverse
-                    conditions and meeting demanding deadlines, allowing Metrix
-                    Engineering to be a reliable partner in the field of
-                    large-scale Infrastructure Construction Services in
-                    Pakistan.
-                  </p>
-                </div>
+                <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
+                  <div className="space-y-4 text-muted-foreground leading-relaxed">
+                    <p>
+                      Metrix Engineering Services is an established Civil Works
+                      Design and engineering company. We approach all Buildings
+                      and Roads Construction with both technical reliability and
+                      visual consideration, ensuring projects function
+                      effectively. We draw upon the varied skills and work
+                      history of our team to serve you with high dependability.
+                    </p>
+                    <p>
+                      With years of experience covering a wide range of
+                      projects, from Dams to Highways and Buildings, we are
+                      prepared for any task. Our team is accustomed to working
+                      in diverse conditions and meeting demanding deadlines,
+                      allowing Metrix Engineering to be a reliable partner in
+                      the field of large-scale Infrastructure Construction
+                      Services in Pakistan.
+                    </p>
+                  </div>
 
-                <div className="flex justify-center">
-                  <div className="relative w-full md:max-w-md h-72 md:h-80 overflow-hidden rounded-lg">
-                    <Image
-                      src="/images/buildingAndConstruction.png" // ← ensure exact filename
-                      alt="Building Solution"
-                      fill
-                      sizes="(min-width: 768px) 28rem, 100vw"
-                      className="object-cover object-top"
-                      priority
-                    />
+                  <div className="flex justify-center">
+                    <div className="relative w-full md:max-w-md h-72 md:h-80 overflow-hidden rounded-lg">
+                      <Image
+                        src="/images/buildingAndConstruction.png" // ← ensure exact filename
+                        alt="Building Solution"
+                        fill
+                        sizes="(min-width: 768px) 28rem, 100vw"
+                        className="object-cover object-top"
+                        priority
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 text-muted-foreground mb-12 md:col-span-2">
+                    <p>
+                      Planning a new building or road project? We can help. Our
+                      service structure is set up to support you through every
+                      stage of the process, from planning to procurement and
+                      implementation. We provide focus on core issues early,
+                      helping manage the project effectively so you save time
+                      and resources.
+                    </p>
                   </div>
                 </div>
 
-                <div className="space-y-4 text-muted-foreground mb-12 md:col-span-2">
-                  <p>
-                    Planning a new building or road project? We can help. Our
-                    service structure is set up to support you through every
-                    stage of the process, from planning to procurement and
-                    implementation. We provide focus on core issues early,
-                    helping manage the project effectively so you save time and
-                    resources.
-                  </p>
-                </div>
-              </div>
-
-              {/* Expertise Section */}
-              <div className="mt-16">
-                <h3 className="text-2xl md:text-3xl  mb-8 text-primary">
-                  Metrix Engineering Services Offers Services in Road &
-                  Infrastructure Sector:
-                </h3>
-                <div className="space-y-3">
-                  {expertise.map((item, index) => (
-                    <div key={index} className="flex items-center gap-4">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
-                        {index + 1}
+                {/* Expertise Section */}
+                <div className="mt-16">
+                  <h3 className="text-2xl md:text-3xl  mb-8 text-primary">
+                    Metrix Engineering Services Offers Services in Road &
+                    Infrastructure Sector:
+                  </h3>
+                  <div className="space-y-3">
+                    {expertise.map((item, index) => (
+                      <div key={index} className="flex items-center gap-4">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
+                          {index + 1}
+                        </div>
+                        <p className="text-foreground">{item}</p>
                       </div>
-                      <p className="text-foreground">{item}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Expertise Section */}
-              <div className="mt-16">
-                <h3 className="text-2xl md:text-3xl  mb-8 text-primary">
-                  Metrix Engineering Services Offers Services in Buildings
-                  Sector:
-                </h3>
-                <div className="space-y-3">
-                  {services.map((item, index) => (
-                    <div key={index} className="flex items-center gap-4">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
-                        {index + 1}
+                {/* Expertise Section */}
+                <div className="mt-16">
+                  <h3 className="text-2xl md:text-3xl  mb-8 text-primary">
+                    Metrix Engineering Services Offers Services in Buildings
+                    Sector:
+                  </h3>
+                  <div className="space-y-3">
+                    {services.map((item, index) => (
+                      <div key={index} className="flex items-center gap-4">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
+                          {index + 1}
+                        </div>
+                        <p className="text-foreground">{item}</p>
                       </div>
-                      <p className="text-foreground">{item}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
-    </div>
+          </section>
+        </main>
+      </div>
+    </motion.div>
   );
 };
 
