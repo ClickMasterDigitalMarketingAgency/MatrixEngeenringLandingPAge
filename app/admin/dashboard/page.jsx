@@ -7,7 +7,7 @@ import { Users, FolderKanban, Package, AlertTriangle } from 'lucide-react';
 
 import dynamic from 'next/dynamic';
 
-// Lazy-loaded components (unchanged)
+// 🔹 Lazy-loaded components
 const AdminHeader = dynamic(
   () => import('@/components/dashboard/AdminHeader'),
   {
@@ -17,45 +17,179 @@ const AdminHeader = dynamic(
   }
 );
 
-const StatsCards = dynamic(() => import('@/components/dashboard/StatsCards'), {
-  loading: () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-      {Array.from({ length: 4 }).map((_, i) => (
-        <div key={i} className="h-28 rounded-lg bg-muted animate-pulse" />
-      ))}
-    </div>
-  ),
-});
-
-const AnalyticsCharts = dynamic(
-  () => import('@/components/dashboard/AnalyticsCharts'),
+const StatsCards = dynamic(
+  () => import('@/components/dashboard/StatsCards'),
   {
     loading: () => (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        {Array.from({ length: 2 }).map((_, i) => (
-          <div key={i} className="h-80 rounded-lg bg-muted animate-pulse" />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div
+            key={i}
+            className="h-28 rounded-lg bg-muted animate-pulse"
+          />
         ))}
       </div>
     ),
   }
 );
 
-const UserManagementSection = dynamic(
-  () => import('@/components/dashboard/UserManagementSection'),
+const AnalyticsCharts = dynamic(
+  () => import('@/components/dashboard/AnalyticsCharts'),
   {
-    loading: () => <div className="h-96 rounded-lg bg-muted animate-pulse" />,
+    loading: () => (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4">
+        {Array.from({ length: 2 }).map((_, i) => (
+          <div
+            key={i}
+            className="h-80 rounded-lg bg-muted animate-pulse"
+          />
+        ))}
+      </div>
+    ),
+    // If recharts breaks on SSR, uncomment this:
+    // ssr: false,
   }
 );
 
-// MOCK DATA (unchanged)
+const UserManagementSection = dynamic(
+  () => import('@/components/dashboard/UserManagementSection'),
+  {
+    loading: () => (
+      <div className="h-96 rounded-lg bg-muted animate-pulse" />
+    ),
+  }
+);
+
+// ---- MOCK DATA (same as before) ----
+
 const initialUsers = [
-  /* ... same as yours ... */
+  {
+    id: '1',
+    name: 'Ali Khan',
+    email: 'ali.khan@matrix.com',
+    role: 'admin',
+    department: 'IT',
+    status: 'active',
+    lastLogin: '2024-11-20T08:30:00',
+    createdAt: '2024-01-15',
+    phone: '+1-555-0101',
+  },
+  {
+    id: '2',
+    name: 'Sara Ahmed',
+    email: 'sara.ahmed@matrix.com',
+    role: 'manager',
+    department: 'Operations',
+    status: 'active',
+    lastLogin: '2024-11-20T09:15:00',
+    createdAt: '2024-02-20',
+    phone: '+1-555-0102',
+  },
+  {
+    id: '3',
+    name: 'Bilal Hussain',
+    email: 'bilal.hussain@matrix.com',
+    role: 'engineer',
+    department: 'Engineering',
+    status: 'active',
+    lastLogin: '2024-11-19T14:20:00',
+    createdAt: '2024-03-10',
+    phone: '+1-555-0103',
+  },
+  {
+    id: '4',
+    name: 'Guest User',
+    email: 'guest@matrix.com',
+    role: 'viewer',
+    department: 'External',
+    status: 'inactive',
+    lastLogin: '2024-11-10T11:00:00',
+    createdAt: '2024-04-05',
+    phone: '+1-555-0104',
+  },
 ];
+
 const initialProjects = [
-  /* ... same as yours ... */
+  {
+    id: 'p1',
+    name: 'Tower Upgrade',
+    description: '4G to 5G upgrade for key sites',
+    status: 'active',
+    assignedTo: ['1', '3'],
+    startDate: '2025-01-10',
+    endDate: '2025-03-15',
+    progress: 45,
+    priority: 'high',
+  },
+  {
+    id: 'p2',
+    name: 'Fiber Rollout',
+    description: 'Metro fiber expansion phase 2',
+    status: 'completed',
+    assignedTo: ['2'],
+    startDate: '2024-09-01',
+    endDate: '2024-12-20',
+    progress: 100,
+    priority: 'medium',
+  },
+  {
+    id: 'p3',
+    name: 'IBS Project',
+    description: 'In-building solution for mall',
+    status: 'on-hold',
+    assignedTo: ['3'],
+    startDate: '2025-02-01',
+    endDate: '2025-05-30',
+    progress: 20,
+    priority: 'high',
+  },
 ];
+
 const initialInventory = [
-  /* ... same as yours ... */
+  {
+    id: 'i1',
+    name: 'RF Antenna',
+    category: 'RF Equipment',
+    quantity: 15,
+    unit: 'pcs',
+    minimumStock: 10,
+    location: 'Warehouse A',
+    lastUpdated: '2025-03-01',
+    status: 'in-stock',
+  },
+  {
+    id: 'i2',
+    name: 'Fiber Patch Cord',
+    category: 'Fiber',
+    quantity: 8,
+    unit: 'pcs',
+    minimumStock: 15,
+    location: 'Warehouse B',
+    lastUpdated: '2025-03-02',
+    status: 'low-stock',
+  },
+  {
+    id: 'i3',
+    name: 'Rack Mount Switch',
+    category: 'Networking',
+    quantity: 4,
+    unit: 'pcs',
+    minimumStock: 5,
+    location: 'Warehouse C',
+    lastUpdated: '2025-03-03',
+    status: 'critical',
+  },
+  {
+    id: 'i4',
+    name: 'Battery Bank',
+    category: 'Power',
+    quantity: 20,
+    unit: 'pcs',
+    minimumStock: 10,
+    location: 'Warehouse A',
+    lastUpdated: '2025-03-04',
+    status: 'in-stock',
+  },
 ];
 
 function getCategoryColor(category) {
@@ -73,7 +207,7 @@ const UserManagementPage = () => {
   const [projects] = useState(initialProjects);
   const [inventory] = useState(initialInventory);
 
-  // derived values (unchanged)
+  // ---- derived values ----
   const activeUsers = users.filter((u) => u.status === 'active').length;
   const activeProjects = projects.filter((p) => p.status === 'active').length;
   const lowStockItems = inventory.filter(
@@ -95,16 +229,57 @@ const UserManagementPage = () => {
   }, []);
 
   const roleDistribution = [
-    /* ... unchanged ... */
-  ];
-  const projectStatusData = [
-    /* ... unchanged ... */
-  ];
-  const systemHealthData = [
-    /* ... unchanged ... */
+    {
+      name: 'Admin',
+      value: users.filter((u) => u.role === 'admin').length,
+      color: '#ef4444',
+    },
+    {
+      name: 'Manager',
+      value: users.filter((u) => u.role === 'manager').length,
+      color: '#3b82f6',
+    },
+    {
+      name: 'Engineer',
+      value: users.filter((u) => u.role === 'engineer').length,
+      color: '#10b981',
+    },
+    {
+      name: 'Viewer',
+      value: users.filter((u) => u.role === 'viewer').length,
+      color: '#6b7280',
+    },
   ];
 
-  // handlers (unchanged)
+  const projectStatusData = [
+    {
+      name: 'Active',
+      value: projects.filter((p) => p.status === 'active').length,
+      color: '#10b981',
+    },
+    {
+      name: 'Completed',
+      value: projects.filter((p) => p.status === 'completed').length,
+      color: '#3b82f6',
+    },
+    {
+      name: 'On Hold',
+      value: projects.filter((p) => p.status === 'on-hold').length,
+      color: '#f59e0b',
+    },
+  ];
+
+  const systemHealthData = [
+    { name: 'Users', value: (activeUsers / users.length) * 100 },
+    { name: 'Projects', value: (activeProjects / projects.length) * 100 },
+    {
+      name: 'Inventory',
+      value: ((inventory.length - lowStockItems) / inventory.length) * 100,
+    },
+  ];
+
+  // ---- handlers ----
+
   const handleAddUser = (payload) => {
     const userToAdd = {
       ...payload,
@@ -129,10 +304,9 @@ const UserManagementPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background p-4 sm:p-6 lg:p-8 space-y-6 animate-fade-in">
+    <div className="min-h-screen bg-background p-6 space-y-6 animate-fade-in">
       <AdminHeader onAddUser={handleAddUser} />
 
-      {/* Responsive Stats Grid */}
       <StatsCards
         usersCount={users.length}
         activeUsers={activeUsers}
@@ -143,20 +317,14 @@ const UserManagementPage = () => {
         lowStockItems={lowStockItems}
       />
 
-      {/* Responsive Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <AnalyticsCharts
-          roleDistribution={roleDistribution}
-          projectStatusData={projectStatusData}
-          inventoryByCategory={inventoryByCategory}
-          systemHealthData={systemHealthData}
-        />
-      </div>
+      <AnalyticsCharts
+        roleDistribution={roleDistribution}
+        projectStatusData={projectStatusData}
+        inventoryByCategory={inventoryByCategory}
+        systemHealthData={systemHealthData}
+      />
 
-      {/* User table – ensure the component itself is responsive */}
-      <div className="overflow-x-auto rounded-lg border bg-card shadow-sm">
-        <UserManagementSection users={users} onDeleteUser={handleDeleteUser} />
-      </div>
+      <UserManagementSection users={users} onDeleteUser={handleDeleteUser} />
     </div>
   );
 };
