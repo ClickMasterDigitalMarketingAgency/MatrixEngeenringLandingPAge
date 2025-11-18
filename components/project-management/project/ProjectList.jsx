@@ -260,9 +260,9 @@ export default function ProjectList({
                   variant="outline"
                   size="sm"
                   className="gap-1"
-                  onClick={() =>
-                    router.push(`/admin/tasks?projectId=${project.id}`)
-                  }
+                  // onClick={() =>
+                  //   router.push(`/admin/tasks?projectId=${project.id}`)
+                  // }
                 >
                   <ListTodo className="h-3 w-3" />
                   View Tasks
@@ -271,9 +271,9 @@ export default function ProjectList({
                   variant="outline"
                   size="sm"
                   className="gap-1"
-                  onClick={() =>
-                    router.push(`/admin/subtasks?projectId=${project.id}`)
-                  }
+                  // onClick={() =>
+                  //   router.push(`/admin/subtasks?projectId=${project.id}`)
+                  // }
                 >
                   <ListChecks className="h-3 w-3" />
                   View Subtasks
@@ -282,9 +282,9 @@ export default function ProjectList({
                   variant="outline"
                   size="sm"
                   className="gap-1"
-                  onClick={() =>
-                    router.push(`/admin/goals?projectId=${project.id}`)
-                  }
+                  // onClick={() =>
+                  //   router.push(`/admin/goals?projectId=${project.id}`)
+                  // }
                 >
                   <Target className="h-3 w-3" />
                   View Goals

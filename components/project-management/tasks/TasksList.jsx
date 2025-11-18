@@ -271,9 +271,9 @@ const TasksList = ({
                   variant="outline"
                   size="sm"
                   className="gap-1"
-                  onClick={() =>
-                    router.push(`/admin/subtasks?taskId=${task.id}`)
-                  }
+                  // onClick={() =>
+                  //   router.push(`/admin/subtasks?taskId=${task.id}`)
+                  // }
                 >
                   <ListChecks className="h-3 w-3" />
                   View Subtasks
@@ -283,9 +283,9 @@ const TasksList = ({
                     variant="outline"
                     size="sm"
                     className="gap-1"
-                    onClick={() =>
-                      router.push(`/admin/projects?id=${project.id}`)
-                    }
+                    // onClick={() =>
+                    //   router.push(`/admin/projects?id=${project.id}`)
+                   // }
                   >
                     <FolderOpen className="h-3 w-3" />
                     View Project

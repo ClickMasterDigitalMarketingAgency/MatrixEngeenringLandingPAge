@@ -280,7 +280,7 @@ export default function GoalsGrid({
                   variant="outline"
                   size="sm"
                   className="gap-1"
-                  onClick={() => onOpenTasks(goal.id)}
+                  // onClick={() => onOpenTasks(goal.id)}
                 >
                   <ListTodo className="h-3 w-3" />
                   View Related Tasks
@@ -291,7 +291,7 @@ export default function GoalsGrid({
                     variant="outline"
                     size="sm"
                     className="gap-1"
-                    onClick={() => onOpenProject(project.id)}
+                    //onClick={() => onOpenProject(project.id)}
                   >
                     <FolderOpen className="h-3 w-3" />
                     {project.name}

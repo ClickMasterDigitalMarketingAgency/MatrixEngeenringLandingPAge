@@ -6,13 +6,13 @@ import { Label } from '@/components/ui/label';
 import { Mail, Lock, User, Github, Linkedin } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-// ✅ Just added this component – nothing else touched
+// ✅ Responsive AnimatedBackground
 function AnimatedBackground() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-background via-background to-muted">
-      {/* Animated Curvy Lines */}
+      {/* Animated Curvy Lines - Hidden on mobile */}
       <svg
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full hidden sm:block"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -84,10 +84,10 @@ function AnimatedBackground() {
         />
       </svg>
 
-      {/* Floating Orbs */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-[float_15s_ease-in-out_infinite]" />
-      <div className="absolute top-40 right-20 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-[float_20s_ease-in-out_infinite_reverse]" />
-      <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl animate-[float_18s_ease-in-out_infinite]" />
+      {/* Floating Orbs - Smaller and positioned for mobile */}
+      <div className="absolute top-10 left-4 w-40 h-40 sm:top-20 sm:left-10 sm:w-64 sm:h-64 bg-primary/10 rounded-full blur-3xl animate-[float_15s_ease-in-out_infinite]" />
+      <div className="absolute top-20 right-8 w-48 h-48 sm:top-40 sm:right-20 sm:w-80 sm:h-80 bg-purple-500/10 rounded-full blur-3xl animate-[float_20s_ease-in-out_infinite_reverse]" />
+      <div className="absolute bottom-10 left-1/4 w-44 h-44 sm:bottom-20 sm:left-1/3 sm:w-72 sm:h-72 bg-indigo-500/10 rounded-full blur-3xl animate-[float_18s_ease-in-out_infinite]" />
 
       {/* Gradient Mesh Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.15),transparent_50%),radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.1),transparent_50%)]" />
@@ -106,13 +106,6 @@ const Index = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    // ✅ Frontend validation
-    // if (!signinEmail.trim() || !signinPassword.trim()) {
-    //   setLoginError('Email and password are required.');
-    //   return;
-    // }
-
     setLoginError('');
 
     // TODO: call your real login API here and check response
@@ -131,41 +124,70 @@ const Index = () => {
       <AnimatedBackground />
 
       <div className="min-h-screen flex items-center justify-center bg-background/80 p-4">
-        <div className="relative w-full max-w-4xl h-[600px] bg-card rounded-3xl shadow-2xl overflow-hidden">
-          {/* Animated Overlay Panel */}
+        {/* Main Container - Responsive sizing */}
+        <div className="relative w-full max-w-4xl h-auto min-h-[600px] sm:h-[600px] bg-card rounded-3xl shadow-2xl overflow-hidden">
+          {/* Mobile Toggle Buttons - Only show on small screens */}
+          <div className="sm:hidden flex w-full bg-primary p-4">
+            <button
+              onClick={() => setIsSignUp(true)}
+              className={`flex-1 py-3 px-4 rounded-2xl font-semibold transition-all duration-300 ${
+                isSignUp
+                  ? 'bg-card text-primary shadow-lg'
+                  : 'text-card bg-transparent'
+              }`}
+            >
+              SIGN IN
+            </button>
+            <button
+              onClick={() => setIsSignUp(false)}
+              className={`flex-1 py-3 px-4 rounded-2xl font-semibold transition-all duration-300 ${
+                !isSignUp
+                  ? 'bg-card text-primary shadow-lg'
+                  : 'text-card bg-transparent'
+              }`}
+            >
+              SIGN UP
+            </button>
+          </div>
+
+          {/* Animated Overlay Panel - Hidden on mobile, shown on desktop */}
           <div
-            className={`absolute top-0 h-full w-1/2 bg-primary z-10 transition-all duration-700 ease-in-out flex items-center justify-center text-card ${
+            className={`hidden sm:flex absolute top-0 h-full w-1/2 bg-primary z-10 transition-all duration-700 ease-in-out items-center justify-center text-card ${
               isSignUp
                 ? 'left-0 rounded-r-[200px]'
                 : 'left-1/2 rounded-l-[200px]'
             }`}
           >
-            <div className="text-center px-12">
+            <div className="text-center px-8 lg:px-12">
               {isSignUp ? (
                 <div className="animate-fade-in">
-                  <h2 className="text-4xl font-bold mb-4">Welcome Back!</h2>
-                  <p className="mb-8 opacity-90">
+                  <h2 className="text-2xl lg:text-4xl font-bold mb-4">
+                    Welcome Back!
+                  </h2>
+                  <p className="mb-6 lg:mb-8 opacity-90 text-sm lg:text-base">
                     Enter your personal details to use all of site features
                   </p>
                   <Button
                     variant="outline"
                     onClick={() => setIsSignUp(false)}
-                    className="border-2 border-card text-card bg-transparent hover:bg-card hover:text-primary rounded-full px-12 py-6 text-base font-semibold transition-all duration-300"
+                    className="border-2 border-card text-card bg-transparent hover:bg-card hover:text-primary rounded-full px-8 lg:px-12 py-4 lg:py-6 text-sm lg:text-base font-semibold transition-all duration-300"
                   >
                     SIGN IN
                   </Button>
                 </div>
               ) : (
                 <div className="animate-fade-in">
-                  <h2 className="text-4xl font-bold mb-4">Hello, Friend!</h2>
-                  <p className="mb-8 opacity-90">
+                  <h2 className="text-2xl lg:text-4xl font-bold mb-4">
+                    Hello, Friend!
+                  </h2>
+                  <p className="mb-6 lg:mb-8 opacity-90 text-sm lg:text-base">
                     Register with your personal details to use all of site
                     features
                   </p>
                   <Button
                     variant="outline"
                     onClick={() => setIsSignUp(true)}
-                    className="border-2 border-card text-card bg-transparent hover:bg-card hover:text-primary rounded-full px-12 py-6 text-base font-semibold transition-all duration-300"
+                    className="border-2 border-card text-card bg-transparent hover:bg-card hover:text-primary rounded-full px-8 lg:px-12 py-4 lg:py-6 text-sm lg:text-base font-semibold transition-all duration-300"
                   >
                     SIGN UP
                   </Button>
@@ -176,25 +198,27 @@ const Index = () => {
 
           {/* Sign Up Form */}
           <div
-            className={`absolute top-0 left-0 w-1/2 h-full flex items-center justify-center p-12 transition-all duration-700 ${
-              isSignUp ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            className={`w-full sm:absolute top-0 left-0 sm:w-1/2 h-full flex items-center justify-center p-6 sm:p-12 transition-all duration-700 ${
+              isSignUp
+                ? 'sm:opacity-0 sm:pointer-events-none hidden sm:block'
+                : 'block'
             }`}
           >
             <div className="w-full max-w-sm">
-              <h2 className="text-3xl font-bold text-foreground mb-2">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
                 Create Account
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground mb-6 text-sm sm:text-base">
                 or use your email for registration
               </p>
 
-              <div className="flex gap-3 mb-6">
+              <div className="flex gap-2 sm:gap-3 mb-6 justify-center sm:justify-start">
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-lg w-12 h-12 border-border hover:bg-secondary"
+                  className="rounded-lg w-10 h-10 sm:w-12 sm:h-12 border-border hover:bg-secondary"
                 >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
                       d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -216,10 +240,10 @@ const Index = () => {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-lg w-12 h-12 border-border hover:bg-secondary"
+                  className="rounded-lg w-10 h-10 sm:w-12 sm:h-12 border-border hover:bg-secondary"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -229,16 +253,16 @@ const Index = () => {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-lg w-12 h-12 border-border hover:bg-secondary"
+                  className="rounded-lg w-10 h-10 sm:w-12 sm:h-12 border-border hover:bg-secondary"
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-lg w-12 h-12 border-border hover:bg-secondary"
+                  className="rounded-lg w-10 h-10 sm:w-12 sm:h-12 border-border hover:bg-secondary"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
               </div>
 
@@ -248,12 +272,12 @@ const Index = () => {
                     Name
                   </Label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                     <Input
                       id="signup-name"
                       type="text"
                       placeholder="Name"
-                      className="pl-10 h-12 bg-secondary border-0 rounded-lg"
+                      className="pl-10 h-11 sm:h-12 bg-secondary border-0 rounded-lg text-sm sm:text-base"
                     />
                   </div>
                 </div>
@@ -263,12 +287,12 @@ const Index = () => {
                     Email
                   </Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                     <Input
                       id="signup-email"
                       type="email"
                       placeholder="Email"
-                      className="pl-10 h-12 bg-secondary border-0 rounded-lg"
+                      className="pl-10 h-11 sm:h-12 bg-secondary border-0 rounded-lg text-sm sm:text-base"
                     />
                   </div>
                 </div>
@@ -278,17 +302,17 @@ const Index = () => {
                     Password
                   </Label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                     <Input
                       id="signup-password"
                       type="password"
                       placeholder="Password"
-                      className="pl-10 h-12 bg-secondary border-0 rounded-lg"
+                      className="pl-10 h-11 sm:h-12 bg-secondary border-0 rounded-lg text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
-                <Button className="w-full h-12 rounded-full bg-primary hover:bg-primary/90 text-card font-semibold text-base">
+                <Button className="w-full h-11 sm:h-12 rounded-full bg-primary hover:bg-primary/90 text-card font-semibold text-sm sm:text-base">
                   SIGN UP
                 </Button>
               </form>
@@ -297,25 +321,27 @@ const Index = () => {
 
           {/* Sign In Form */}
           <div
-            className={`absolute top-0 right-0 w-1/2 h-full flex items-center justify-center p-12 transition-all duration-700 ${
-              isSignUp ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            className={`w-full sm:absolute top-0 right-0 sm:w-1/2 h-full flex items-center justify-center p-6 sm:p-12 transition-all duration-700 ${
+              isSignUp
+                ? 'block'
+                : 'sm:opacity-0 sm:pointer-events-none hidden sm:block'
             }`}
           >
             <div className="w-full max-w-sm">
-              <h2 className="text-3xl font-bold text-foreground mb-2">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
                 Sign in to Account
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground mb-6 text-sm sm:text-base">
                 or use your email account
               </p>
 
-              <div className="flex gap-3 mb-6">
+              <div className="flex gap-2 sm:gap-3 mb-6 justify-center sm:justify-start">
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-lg w-12 h-12 border-border hover:bg-secondary"
+                  className="rounded-lg w-10 h-10 sm:w-12 sm:h-12 border-border hover:bg-secondary"
                 >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
                       d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -337,10 +363,10 @@ const Index = () => {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-lg w-12 h-12 border-border hover:bg-secondary"
+                  className="rounded-lg w-10 h-10 sm:w-12 sm:h-12 border-border hover:bg-secondary"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -350,16 +376,16 @@ const Index = () => {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-lg w-12 h-12 border-border hover:bg-secondary"
+                  className="rounded-lg w-10 h-10 sm:w-12 sm:h-12 border-border hover:bg-secondary"
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-lg w-12 h-12 border-border hover:bg-secondary"
+                  className="rounded-lg w-10 h-10 sm:w-12 sm:h-12 border-border hover:bg-secondary"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
               </div>
 
@@ -369,12 +395,12 @@ const Index = () => {
                     Email
                   </Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                     <Input
                       id="signin-email"
                       type="email"
                       placeholder="Email"
-                      className="pl-10 h-12 bg-secondary border-0 rounded-lg"
+                      className="pl-10 h-11 sm:h-12 bg-secondary border-0 rounded-lg text-sm sm:text-base"
                       value={signinEmail}
                       onChange={(e) => setSigninEmail(e.target.value)}
                     />
@@ -386,12 +412,12 @@ const Index = () => {
                     Password
                   </Label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                     <Input
                       id="signin-password"
                       type="password"
                       placeholder="Password"
-                      className="pl-10 h-12 bg-secondary border-0 rounded-lg"
+                      className="pl-10 h-11 sm:h-12 bg-secondary border-0 rounded-lg text-sm sm:text-base"
                       value={signinPassword}
                       onChange={(e) => setSigninPassword(e.target.value)}
                     />
@@ -404,14 +430,14 @@ const Index = () => {
 
                 <button
                   type="button"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors inline-block"
+                  className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors inline-block"
                 >
                   Forgot your password?
                 </button>
 
                 <Button
                   type="submit"
-                  className="w-full h-12 rounded-full bg-primary hover:bg-primary/90 text-card font-semibold text-base"
+                  className="w-full h-11 sm:h-12 rounded-full bg-primary hover:bg-primary/90 text-card font-semibold text-sm sm:text-base"
                 >
                   LOG IN
                 </Button>
@@ -422,7 +448,6 @@ const Index = () => {
       </div>
     </>
   );
-
 };
 
 export default Index;

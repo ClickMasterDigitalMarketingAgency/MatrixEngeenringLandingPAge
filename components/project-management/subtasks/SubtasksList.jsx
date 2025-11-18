@@ -253,9 +253,9 @@ export default function SubtasksList({
                   variant="outline"
                   size="sm"
                   className="gap-1"
-                  onClick={() =>
-                    router.push(`/admin/tasks?id=${subtask.taskId}`)
-                  }
+                  // onClick={() =>
+                  //   router.push(`/admin/tasks?id=${subtask.taskId}`)
+                  // }
                 >
                   <ArrowUpRight className="h-3 w-3" />
                   View Parent Task
@@ -265,9 +265,9 @@ export default function SubtasksList({
                     variant="outline"
                     size="sm"
                     className="gap-1"
-                    onClick={() =>
-                      router.push(`/admin/projects?id=${project.id}`)
-                    }
+                    // onClick={() =>
+                    //   router.push(`/admin/projects?id=${project.id}`)
+                    // }
                   >
                     <FolderOpen className="h-3 w-3" />
                     View Project
