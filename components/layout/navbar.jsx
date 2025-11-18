@@ -4,13 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu';
+} from '../ui/dropdown-menu';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 

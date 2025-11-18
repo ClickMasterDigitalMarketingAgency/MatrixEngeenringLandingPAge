@@ -108,10 +108,10 @@ const Index = () => {
     e.preventDefault();
 
     // ✅ Frontend validation
-    if (!signinEmail.trim() || !signinPassword.trim()) {
-      setLoginError('Email and password are required.');
-      return;
-    }
+    // if (!signinEmail.trim() || !signinPassword.trim()) {
+    //   setLoginError('Email and password are required.');
+    //   return;
+    // }
 
     setLoginError('');
 

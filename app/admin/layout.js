@@ -1,9 +1,11 @@
 // app/admin/layout.jsx
 'use client';
 
-import AdminSidebar from '../../components/Sidebar';
+import AdminSidebar from '../../components/layout/Sidebar';
 import { SidebarProvider } from '@/components/ui/sidebar';
-import { Navbar as AdminNavbar } from '@/components/AdminNavbar';
+import { Navbar as AdminNavbar } from '@/components/layout/AdminNavbar';
+import { Toaster } from '@/components/ui/sonner';
+
 
 export default function AdminLayout({ children }) {
   return (
@@ -19,6 +21,7 @@ export default function AdminLayout({ children }) {
           <AdminNavbar />
           <main className="flex-1 overflow-y-auto">
             {children}
+            <Toaster position="top-right"  richColors />
           </main>
         </div>
       </div>

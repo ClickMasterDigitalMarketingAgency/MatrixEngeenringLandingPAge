@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 
-import Hero from '@/components/home/Hero';
-import Stats from '@/components/home/Stats';
-import Services from '@/components/home/Services';
-import Clients from '@/components/home/Clients';
-import Location from '@/components/home/Location';
-import Products from '@/components/home/Products';
-import About from "@/components/home/About";
+import Hero from '@/components/landing-pages/home/Hero';
+import Stats from '@/components/landing-pages/home/Stats';
+import Services from '@/components/landing-pages/home/Services';
+import Clients from '@/components/landing-pages/home/Clients';
+import Location from '@/components/landing-pages/home/Location';
+import Products from '@/components/landing-pages/home/Products';
+import About from "@/components/landing-pages/home/About";
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },

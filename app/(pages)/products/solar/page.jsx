@@ -1,7 +1,7 @@
 import React from 'react';
-import SolarEnergyPartner from '../../../../components/products/solar/SolarEnergyPartner';
+import SolarEnergyPartner from '../../../../components/landing-pages/products/solar/SolarEnergyPartner';
 import Image from 'next/image';
-import Benefits from '../../../../components/products/solar/Benefits';
+import Benefits from '../../../../components/landing-pages/products/solar/Benefits';
 export default function page() {
   return (
     <div>

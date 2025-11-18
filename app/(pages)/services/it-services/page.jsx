@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion';
 
-import { Hero } from '@/components/it-services/Hero';
-import { Solutions } from '@/components/it-services/Solutions';
-import { Services } from '@/components/it-services/Services';
-import { Demo } from '@/components/it-services/Demo';
-import { Products } from '@/components/it-services/Products';
-import { Partners } from '@/components/it-services/Partners';
+import { Hero } from '@/components/landing-pages/it-services/Hero';
+import { Solutions } from '@/components/landing-pages/it-services/Solutions';
+import { Services } from '@/components/landing-pages/it-services/Services';
+import { Demo } from '@/components/landing-pages/it-services/Demo';
+import { Products } from '@/components/landing-pages/it-services/Products';
+import { Partners } from '@/components/landing-pages/it-services/Partners';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },

@@ -400,7 +400,7 @@ const InventoryManagement = () => {
   // ---------- UI ----------
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6 space-y-6 animate-fade-in">
+    <div className="min-h-screen bg-background p-6 space-y-6 animate-fade-in">
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
         <div className="flex-1">

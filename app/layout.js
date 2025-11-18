@@ -1,7 +1,7 @@
 // app/layout.tsx
 import './globals.css';
 // app/(site)/layout.jsx
-import { Navbar } from '@/components/navbar';
+import { Navbar } from '@/components/layout/navbar';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 const geistSans = Geist({

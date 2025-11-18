@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Card } from '../ui/card';
+import { Card } from '../../ui/card';
 import {
   Radio,
   Users as UsersIcon,

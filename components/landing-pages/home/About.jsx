@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '../ui/card';
+import { Card } from '../../ui/card';
 import { Target, Telescope, HeartHandshake } from 'lucide-react';
 
 export default function About() {
