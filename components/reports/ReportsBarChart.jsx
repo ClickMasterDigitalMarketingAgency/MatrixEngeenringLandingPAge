@@ -18,7 +18,7 @@ import {
   CardContent,
 } from '@/components/ui/card';
 import { BarChart3 } from 'lucide-react';
-import { COLORS } from '@/app/admin/reports/page'; // adjust path if needed
+import { COLORS } from '@/components/reports/ReportModule'; // adjust path if needed
 
 const ReportsBarChart = ({ performanceData, reportType }) => {
   const title =

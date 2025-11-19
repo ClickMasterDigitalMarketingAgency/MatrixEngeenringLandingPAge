@@ -47,31 +47,37 @@ const ProfileCard = ({
   return (
     <Card className="border border-slate-200 shadow-sm bg-white">
       <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg border border-primary/10">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          {/* Left: Icon + title + description */}
+          <div className="flex items-start gap-3">
+            <div className="p-2 rounded-lg border border-primary/10 bg-primary/5">
               <User className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <CardTitle className="text-xl text-slate-900">
+              <CardTitle className="text-lg sm:text-xl text-slate-900">
                 Profile Information
               </CardTitle>
-              <CardDescription className="text-slate-600">
+              <CardDescription className="text-slate-600 text-sm sm:text-base">
                 Manage your personal and professional details
               </CardDescription>
             </div>
           </div>
+
+          {/* Right: Edit button */}
           {!isEditingProfile && (
-            <Button
-              variant="outline"
-              onClick={() => setIsEditingProfile(true)}
-              className="border-slate-300 text-slate-700 hover:bg-slate-50"
-            >
-              Edit Profile
-            </Button>
+            <div className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                onClick={() => setIsEditingProfile(true)}
+                className="w-full sm:w-auto border-slate-300 text-slate-700 hover:bg-slate-50"
+              >
+                Edit Profile
+              </Button>
+            </div>
           )}
         </div>
       </CardHeader>
+
       <CardContent className="space-y-6">
         {isEditingProfile ? (
           <div className="space-y-6">
