@@ -13,8 +13,15 @@ import {
   Settings,
   Truck,
   ClipboardList,
-  CheckSquare,
+  Users,
+  Building,
+  HelpCircle,
+  Phone,
+  FileText,
   Target,
+  ListTree,
+  History,
+  ShoppingCart,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -43,77 +50,218 @@ import Image from 'next/image';
 
 const menuItems = [
   {
-    title: 'Dashboard',
-    url: '/admin/dashboard',
+    title: 'Overview',
     icon: LayoutDashboard,
+    children: [
+      {
+        title: 'Dashboard',
+        url: '/admin/dashboard',
+        icon: LayoutDashboard,
+      },
+      {
+        title: 'Analytics',
+        url: '/admin/analytics',
+        icon: BarChart3,
+      },
+    ],
+  },
+  {
+    title: 'Inventory Management',
+    icon: Package,
+    children: [
+      {
+        title: 'Material Items',
+        url: '/admin/inventory/materials',
+        icon: Package,
+      },
+      {
+        title: 'Stock In / Stock Out',
+        url: '/admin/inventory/stock-transactions',
+        icon: ClipboardList,
+      },
+      {
+        title: 'Inventory History',
+        url: '/admin/inventory/history',
+        icon: History,
+      },
+      {
+        title: 'Material Categories',
+        url: '/admin/inventory/categories',
+        icon: ListTree,
+      },
+      {
+        title: 'Vendors & Suppliers',
+        url: '/admin/inventory/vendors',
+        icon: Truck,
+      },
+      {
+        title: 'Purchase Orders',
+        url: '/admin/inventory/purchase-orders',
+        icon: ShoppingCart,
+      },
+    ],
   },
   {
     title: 'Project Management',
     icon: FolderKanban,
     children: [
       {
-        title: 'Projects',
-        url: '/admin/project-management/projects',
+        title: 'All Projects',
+        url: '/admin/projects',
         icon: FolderKanban,
       },
+      // {
+      //   title: 'Project Details',
+      //   url: '/admin/projects/details',
+      //   icon: FileText,
+      //   children: [
+      //     {
+      //       title: 'Assigned Material',
+      //       url: '/admin/projects/assigned-material',
+      //     },
+      //     {
+      //       title: 'Tasks & Milestones',
+      //       url: '/admin/projects/tasks-milestones',
+      //     },
+      //     {
+      //       title: 'Team Members',
+      //       url: '/admin/projects/team-members',
+      //     },
+      //     {
+      //       title: 'Site Surveys',
+      //       url: '/admin/projects/site-surveys',
+      //     },
+      //     {
+      //       title: 'Project Reports',
+      //       url: '/admin/projects/reports',
+      //     },
+      //   ],
+      // },
       {
-        title: 'Tasks',
-        url: '/admin/project-management/tasks',
+        title: 'Task Management',
+        url: '/admin/projects/tasks',
         icon: ClipboardList,
       },
       {
-        title: 'Subtasks',
-        url: '/admin/project-management/subtasks',
-        icon: CheckSquare,
-      },
-      { title: 'Goals', url: '/admin/project-management/goals', icon: Target },
-    ],
-  },
-  {
-    title: 'Inventory',
-    icon: Package,
-    children: [
-      {
-        title: 'Products',
-        url: '/admin/inventory/products',
+        title: 'Material Allocation',
+        url: '/admin/projects/material-allocation',
         icon: Package,
       },
       {
-        title: 'Categories',
-        url: '/admin/inventory/categories',
-        icon: FolderKanban,
-      },
-      {
-        title: 'Stock Levels',
-        url: '/admin/inventory/stock-levels',
-        icon: Package,
+        title: 'Project Progress Tracking',
+        url: '/admin/projects/progress',
+        icon: Target,
       },
     ],
   },
   {
-    title: 'Vendors',
-    icon: Truck,
+    title: 'Users & Roles',
+    icon: Users,
     children: [
       {
-        title: 'Vendor Management',
-        url: '/admin/vendors/vendor-list',
-        icon: Truck,
+        title: 'All Users',
+        url: '/admin/users',
+        icon: Users,
       },
       {
-        title: 'Purchase Orders',
-        url: '/admin/vendors/purchase-orders',
+        title: 'Roles & Permissions',
+        url: '/admin/users/roles',
+        icon: Settings,
+      },
+      {
+        title: 'Activity Logs',
+        url: '/admin/users/activity-logs',
+        icon: History,
+      },
+    ],
+  },
+  {
+    title: 'Company Management',
+    icon: Building,
+    children: [
+      {
+        title: 'Departments',
+        url: '/admin/company/departments',
+        icon: Building,
+      },
+      {
+        title: 'Teams',
+        url: '/admin/company/teams',
+        icon: Users,
+      },
+      {
+        title: 'Clients',
+        url: '/admin/company/clients',
+        icon: User,
+      },
+    ],
+  },
+  {
+    title: 'Settings',
+    icon: Settings,
+    children: [
+      {
+        title: 'System Settings',
+        url: '/admin/settings/system',
+        icon: Settings,
+      },
+      {
+        title: 'Profile Settings',
+        url: '/admin/settings/profile',
+        icon: User,
+      },
+      {
+        title: 'Notifications',
+        url: '/admin/settings/notifications',
         icon: ClipboardList,
       },
     ],
   },
   {
-    title: 'Reports',
-    url: '/admin/reports',
-    icon: BarChart3,
+    title: 'Support',
+    icon: HelpCircle,
+    children: [
+      {
+        title: 'Help Center',
+        url: '/admin/support/help',
+        icon: HelpCircle,
+      },
+      {
+        title: 'Contact Support',
+        url: '/admin/support/contact',
+        icon: Phone,
+      },
+    ],
   },
-
-  { title: 'Settings', url: '/admin/settings', icon: Settings },
 ];
+
+// Flatten the menu structure for easier navigation
+const flattenMenuItems = (items) => {
+  const flatItems = [];
+  
+  items.forEach(item => {
+    if (item.children) {
+      item.children.forEach(child => {
+        if (child.children) {
+          // Handle nested children (like in Project Details)
+          child.children.forEach(nestedChild => {
+            flatItems.push({
+              ...nestedChild,
+              url: nestedChild.url,
+            });
+          });
+        } else {
+          flatItems.push({
+            ...child,
+            url: child.url,
+          });
+        }
+      });
+    }
+  });
+  
+  return flatItems;
+};
 
 export default function DashboardSidebar() {
   const { state, toggleSidebar } = useSidebar();
@@ -154,6 +302,176 @@ export default function DashboardSidebar() {
 
   const isSectionOpen = (title) => {
     return openSections[title] ?? false;
+  };
+
+  const renderMenuItems = (items, level = 0) => {
+    return items.map((item, index) => {
+      const hasChildren = !!item.children?.length;
+      const sectionOpen = hasChildren ? isSectionOpen(item.title) : false;
+      const Icon = item.icon;
+
+      const sectionActive = hasChildren && 
+        item.children.some(child => {
+          if (child.children) {
+            return child.children.some(nestedChild => isActive(nestedChild.url));
+          }
+          return isActive(child.url);
+        });
+
+      // Simple item with URL
+      if (!hasChildren && item.url) {
+        const active = isActive(item.url);
+
+        return (
+          <SidebarMenuItem
+            key={item.title}
+            className="mb-2 slide-in-item"
+            style={{ 
+              animationDelay: `${index * 0.05}s`,
+              marginLeft: level > 0 ? `${level * 12}px` : '0'
+            }}
+          >
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <SidebarMenuButton
+                  asChild
+                  className={cn(
+                    'nav-item p-0 border-0',
+                    active && 'active'
+                  )}
+                >
+                  <Link
+                    href={item.url}
+                    onMouseEnter={() => setHoveredItem(item.title)}
+                    onMouseLeave={() => setHoveredItem(null)}
+                    className={cn(
+                      'flex items-center gap-3 w-full px-3 py-3 relative overflow-hidden rounded-lg font-medium',
+                      active
+                        ? 'text-slate-800'
+                        : 'text-foreground-50/90 hover:bg-foreground/15'
+                    )}
+                  >
+                    <div className="icon-container p-1.5 rounded-md flex items-center justify-center">
+                      <Icon
+                        className={cn(
+                          'h-4 w-4 transition-transform duration-300',
+                          active
+                            ? 'text-sky-500'
+                            : 'text-foreground',
+                          hoveredItem === item.title &&
+                            'text-sky-400 scale-110'
+                        )}
+                      />
+                    </div>
+
+                    {state === 'expanded' && (
+                      <span className={cn(
+                        "text-sm font-medium menu-text",
+                        level > 0 && "menu-text-child"
+                      )}>
+                        {item.title}
+                      </span>
+                    )}
+                  </Link>
+                </SidebarMenuButton>
+              </TooltipTrigger>
+              {state !== 'expanded' && (
+                <TooltipContent side="right" className="text-xs">
+                  {item.title}
+                </TooltipContent>
+              )}
+            </Tooltip>
+          </SidebarMenuItem>
+        );
+      }
+
+      // Parent item with children
+      return (
+        <div
+          key={item.title}
+          className="mb-2 slide-in-item"
+          style={{ 
+            animationDelay: `${index * 0.05}s`,
+            marginLeft: level > 0 ? `${level * 12}px` : '0'
+          }}
+        >
+          <SidebarMenuItem className="mb-1">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <SidebarMenuButton
+                  asChild
+                  className={cn(
+                    'nav-item p-0 border-0 cursor-pointer',
+                    sectionActive && 'active'
+                  )}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleSection(item.title)}
+                    onMouseEnter={() => setHoveredItem(item.title)}
+                    onMouseLeave={() => setHoveredItem(null)}
+                    className={cn(
+                      'flex items-center justify-between gap-2 w-full px-3 py-3 relative overflow-hidden rounded-lg font-medium',
+                      sectionActive
+                        ? 'text-slate-800'
+                        : 'text-foreground-50/90 hover:bg-foreground/15'
+                    )}
+                  >
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                      <div className="icon-container p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
+                        <Icon
+                          className={cn(
+                            'h-4 w-4 transition-transform duration-300',
+                            sectionActive
+                              ? 'text-sky-500'
+                              : 'text-foreground',
+                            hoveredItem === item.title &&
+                              'text-sky-400 scale-110'
+                          )}
+                        />
+                      </div>
+
+                      {state === 'expanded' && (
+                        <span className="text-sm font-medium menu-text flex-1">
+                          {item.title}
+                        </span>
+                      )}
+                    </div>
+
+                    {state === 'expanded' && (
+                      <div className="flex items-center flex-shrink-0">
+                        {sectionOpen ? (
+                          <ChevronUp className="h-4 w-4 text-slate-500 transition-transform duration-300" />
+                        ) : (
+                          <ChevronDown className="h-4 w-4 text-slate-500 transition-transform duration-300" />
+                        )}
+                      </div>
+                    )}
+                  </button>
+                </SidebarMenuButton>
+              </TooltipTrigger>
+              {state !== 'expanded' && (
+                <TooltipContent side="right" className="text-xs">
+                  {item.title}
+                </TooltipContent>
+              )}
+            </Tooltip>
+          </SidebarMenuItem>
+
+          {/* Children list with animation */}
+          {sectionOpen && item.children && (
+            <div
+              className={cn(
+                'ml-2 border-l border-white/30 pl-1 space-y-1',
+                'dropdown-enter'
+              )}
+            >
+              {renderMenuItems(item.children, level + 1)}
+            </div>
+          )}
+        </div>
+      );
+    });
   };
 
   return (
@@ -379,240 +697,7 @@ export default function DashboardSidebar() {
               <SidebarGroup>
                 <SidebarGroupContent>
                   <SidebarMenu className="space-y-2">
-                    {menuItems.map((item, index) => {
-                      const hasChildren = !!item.children?.length;
-                      const sectionOpen = hasChildren
-                        ? isSectionOpen(item.title)
-                        : false;
-                      const Icon = item.icon;
-
-                      const sectionActive =
-                        hasChildren &&
-                        item.children.some((child) => isActive(child.url));
-
-                      // Simple item (Dashboard)
-                      if (!hasChildren && item.url) {
-                        const active = isActive(item.url);
-
-                        return (
-                          <SidebarMenuItem
-                            key={item.title}
-                            className="mb-2 slide-in-item"
-                            style={{ animationDelay: `${index * 0.05}s` }}
-                          >
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <SidebarMenuButton
-                                  asChild
-                                  className={cn(
-                                    'nav-item p-0 border-0',
-                                    active && 'active'
-                                  )}
-                                >
-                                  <Link
-                                    href={item.url}
-                                    onMouseEnter={() =>
-                                      setHoveredItem(item.title)
-                                    }
-                                    onMouseLeave={() => setHoveredItem(null)}
-                                    className={cn(
-                                      'flex items-center gap-3 w-full px-3 py-3 relative overflow-hidden rounded-lg font-medium',
-                                      active
-                                        ? 'text-slate-800'
-                                        : 'text-foreground-50/90 hover:bg-foreground/15'
-                                    )}
-                                  >
-                                    <div className="icon-container p-1.5 rounded-md flex items-center justify-center">
-                                      <Icon
-                                        className={cn(
-                                          'h-4 w-4 transition-transform duration-300',
-                                          active
-                                            ? 'text-sky-500'
-                                            : 'text-foreground',
-                                          hoveredItem === item.title &&
-                                            'text-sky-400 scale-110'
-                                        )}
-                                      />
-                                    </div>
-
-                                    {state === 'expanded' && (
-                                      <span className="text-sm font-medium menu-text">
-                                        {item.title}
-                                      </span>
-                                    )}
-                                  </Link>
-                                </SidebarMenuButton>
-                              </TooltipTrigger>
-                              {state !== 'expanded' && (
-                                <TooltipContent
-                                  side="right"
-                                  className="text-xs"
-                                >
-                                  {item.title}
-                                </TooltipContent>
-                              )}
-                            </Tooltip>
-                          </SidebarMenuItem>
-                        );
-                      }
-
-                      // Parent item with children
-                      return (
-                        <div
-                          key={item.title}
-                          className="mb-2 slide-in-item"
-                          style={{ animationDelay: `${index * 0.05}s` }}
-                        >
-                          <SidebarMenuItem className="mb-1">
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <SidebarMenuButton
-                                  asChild
-                                  className={cn(
-                                    'nav-item p-0 border-0 cursor-pointer',
-                                    sectionActive && 'active'
-                                  )}
-                                >
-                                  <button
-                                    type="button"
-                                    onClick={() => toggleSection(item.title)}
-                                    onMouseEnter={() =>
-                                      setHoveredItem(item.title)
-                                    }
-                                    onMouseLeave={() => setHoveredItem(null)}
-                                    className={cn(
-                                      'flex items-center justify-between gap-2 w-full px-3 py-3 relative overflow-hidden rounded-lg font-medium',
-                                      sectionActive
-                                        ? 'text-slate-800'
-                                        : 'text-foreground-50/90 hover:bg-foreground/15'
-                                    )}
-                                  >
-                                    <div className="flex items-center gap-3 min-w-0 flex-1">
-                                      <div className="icon-container p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
-                                        <Icon
-                                          className={cn(
-                                            'h-4 w-4 transition-transform duration-300',
-                                            sectionActive
-                                              ? 'text-sky-500'
-                                              : 'text-foreground',
-                                            hoveredItem === item.title &&
-                                              'text-sky-400 scale-110'
-                                          )}
-                                        />
-                                      </div>
-
-                                      {state === 'expanded' && (
-                                        <span className="text-sm font-medium menu-text flex-1">
-                                          {item.title}
-                                        </span>
-                                      )}
-                                    </div>
-
-                                    {state === 'expanded' && (
-                                      <div className="flex items-center flex-shrink-0">
-                                        {sectionOpen ? (
-                                          <ChevronUp className="h-4 w-4 text-slate-500 transition-transform duration-300" />
-                                        ) : (
-                                          <ChevronDown className="h-4 w-4 text-slate-500 transition-transform duration-300" />
-                                        )}
-                                      </div>
-                                    )}
-                                  </button>
-                                </SidebarMenuButton>
-                              </TooltipTrigger>
-                              {state !== 'expanded' && (
-                                <TooltipContent
-                                  side="right"
-                                  className="text-xs"
-                                >
-                                  {item.title}
-                                </TooltipContent>
-                              )}
-                            </Tooltip>
-                          </SidebarMenuItem>
-
-                          {/* Children list with animation */}
-                          {sectionOpen && (
-                            <div
-                              className={cn(
-                                'ml-2 border-l border-white/30 pl-1 space-y-1',
-                                'dropdown-enter'
-                              )}
-                            >
-                              {item.children.map((child, childIndex) => {
-                                const childActive = isActive(child.url);
-                                const ChildIcon = child.icon;
-
-                                return (
-                                  <SidebarMenuItem
-                                    key={child.title}
-                                    className="mb-1 slide-in-item"
-                                    style={{
-                                      animationDelay: `${childIndex * 0.03}s`,
-                                    }}
-                                  >
-                                    <Tooltip>
-                                      <TooltipTrigger asChild>
-                                        <SidebarMenuButton
-                                          asChild
-                                          className={cn(
-                                            'nav-item p-0 border-0',
-                                            childActive && 'active'
-                                          )}
-                                        >
-                                          <Link
-                                            href={child.url}
-                                            onMouseEnter={() =>
-                                              setHoveredItem(child.title)
-                                            }
-                                            onMouseLeave={() =>
-                                              setHoveredItem(null)
-                                            }
-                                            className={cn(
-                                              'flex items-center gap-3 w-full px-3 py-2.5 relative overflow-hidden rounded-lg text-sm',
-                                              childActive
-                                                ? 'text-slate-800'
-                                                : 'text-foreground-50/90 hover:bg-foreground/15'
-                                            )}
-                                          >
-                                            <div className="icon-container p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
-                                              <ChildIcon
-                                                className={cn(
-                                                  'h-3.5 w-3.5 transition-transform duration-300',
-                                                  childActive
-                                                    ? 'text-sky-500'
-                                                    : 'text-foreground',
-                                                  hoveredItem === child.title &&
-                                                    'text-sky-400 scale-110'
-                                                )}
-                                              />
-                                            </div>
-
-                                            {state === 'expanded' && (
-                                              <span className="menu-text menu-text-child">
-                                                {child.title}
-                                              </span>
-                                            )}
-                                          </Link>
-                                        </SidebarMenuButton>
-                                      </TooltipTrigger>
-                                      {state !== 'expanded' && (
-                                        <TooltipContent
-                                          side="right"
-                                          className="text-xs"
-                                        >
-                                          {child.title}
-                                        </TooltipContent>
-                                      )}
-                                    </Tooltip>
-                                  </SidebarMenuItem>
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
+                    {renderMenuItems(menuItems)}
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
