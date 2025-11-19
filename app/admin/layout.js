@@ -59,7 +59,7 @@ export default function AdminLayout({ children }) {
         {/* Sidebar - Hidden on mobile by default */}
         <aside
           className={`
-          h-full border-r bg-background
+          h-full border-r bg-background 
           ${
             isMobile
               ? 'fixed inset-y-0 left-0 z-50 hidden data-[state=expanded]:block'
