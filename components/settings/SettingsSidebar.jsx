@@ -25,49 +25,55 @@ const iconMap = {
 
 const SettingsSidebar = ({ categories, activeCategory, setActiveCategory }) => {
   return (
-    <Card className="lg:col-span-1 border border-slate-200 shadow-sm bg-white">
+    <Card className="lg:col-span-1 border border-slate-200 shadow-sm bg-white self-start">
       <CardContent className="p-6 space-y-1">
         <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-4">
           Configuration Categories
         </h3>
-        {categories.map((cat) => {
-          const isActive = activeCategory === cat.id;
-          return (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 flex items-center justify-between group ${
-                isActive
-                  ? 'bg-secondary text-chart-1 border border-border'
-                  : 'text-slate-600 hover:text-slate-800 hover:bg-slate-50'
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  className={
-                    isActive
-                      ? 'text-chart-1'
-                      : 'text-slate-400 group-hover:text-slate-600'
-                  }
-                >
-                  {iconMap[cat.id] || iconMap.all}
-                </span>
-                <span className="font-medium">{cat.label}</span>
-              </div>
-              {cat.count > 0 && (
-                <span
-                  className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    isActive
-                      ? 'bg-chart-1 text-card'
-                      : 'bg-slate-100 text-slate-600'
-                  }`}
-                >
-                  {cat.count}
-                </span>
-              )}
-            </button>
-          );
-        })}
+
+        <div className="space-y-1">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 flex items-center justify-between group ${
+                  isActive
+                    ? 'bg-secondary text-chart-1 border border-border'
+                    : 'text-slate-600 hover:text-slate-800 hover:bg-slate-50'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className={
+                      isActive
+                        ? 'text-chart-1'
+                        : 'text-slate-400 group-hover:text-slate-600'
+                    }
+                  >
+                    {iconMap[cat.id] || iconMap.all}
+                  </span>
+                  <span className="font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+                    {cat.label}
+                  </span>
+                </div>
+
+                {cat.count > 0 && (
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      isActive
+                        ? 'bg-chart-1 text-card'
+                        : 'bg-slate-100 text-slate-600'
+                    }`}
+                  >
+                    {cat.count}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
       </CardContent>
     </Card>
   );
