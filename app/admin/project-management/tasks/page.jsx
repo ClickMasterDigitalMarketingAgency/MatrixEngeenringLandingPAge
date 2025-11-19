@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { toast } from 'sonner';
 
@@ -69,14 +69,14 @@ const UpdateProgressDialog = dynamic(
 );
 
 const Tasks = () => {
-  const searchParams = useSearchParams();
   const router = useRouter();
-  const projectIdFromUrl = searchParams.get('projectId') || 'all';
 
   const [tasks, setTasks] = useState(tasksData);
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [projectFilter, setProjectFilter] = useState(projectIdFromUrl);
+
+  // 🔹 projectFilter initialized from URL on mount
+  const [projectFilter, setProjectFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
   const [priorityFilter, setPriorityFilter] = useState('all');
 
@@ -100,6 +100,14 @@ const Tasks = () => {
   const [progressTask, setProgressTask] = useState(null);
   const [progressInput, setProgressInput] = useState('0');
 
+  // 🔹 Read projectId from URL query on first mount (client-only)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const projectIdFromUrl = params.get('projectId') || 'all';
+    setProjectFilter(projectIdFromUrl);
+  }, []);
+
   const filteredTasks = tasks.filter((task) => {
     const matchesSearch =
       task.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -119,12 +127,18 @@ const Tasks = () => {
 
   const handleProjectFilterChange = (value) => {
     setProjectFilter(value);
-    const params = new URLSearchParams(searchParams);
+
+    if (typeof window === 'undefined') return;
+
+    const params = new URLSearchParams(window.location.search);
+
     if (value === 'all') {
       params.delete('projectId');
     } else {
       params.set('projectId', value);
     }
+
+    // 🔹 Update URL (adjust path if needed, e.g. `/admin/project-management/subtasks`)
     router.push(`/admin/tasks?${params.toString()}`);
   };
 

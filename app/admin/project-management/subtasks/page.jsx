@@ -1,11 +1,12 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 import { subtasksData, tasksData, projectsData } from '../data';
 import dynamic from 'next/dynamic';
+
 // Components
 const SubtasksHeader = dynamic(
   () => import('@/components/project-management/subtasks/SubtasksHeader'),
@@ -53,36 +54,41 @@ const SubtasksList = dynamic(
 
 const EditSubtaskDialog = dynamic(
   () => import('@/components/project-management/subtasks/EditSubtaskDialog'),
-  {
-    loading: () => null, // dialog skeleton not needed
-    ssr: false, // dialogs usually safe to render client-only
-  }
+  { loading: () => null, ssr: false }
 );
 
 const UpdateProgressDialog = dynamic(
   () => import('@/components/project-management/subtasks/UpdateProgressDialog'),
-  {
-    loading: () => null,
-    ssr: false,
-  }
+  { loading: () => null, ssr: false }
 );
-
 
 const SubtasksPage = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  const taskIdFromUrl = searchParams.get('taskId') || 'all';
-  const projectIdFromUrl = searchParams.get('projectId') || 'all';
+  // 🔹 Filters initialized default as "all"
+  const [taskFilter, setTaskFilter] = useState('all');
+  const [projectFilter, setProjectFilter] = useState('all');
 
+  // Initialize from URL only once (client-side)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const params = new URLSearchParams(window.location.search);
+
+    const taskIdFromUrl = params.get('taskId') || 'all';
+    const projectIdFromUrl = params.get('projectId') || 'all';
+
+    setTaskFilter(taskIdFromUrl);
+    setProjectFilter(projectIdFromUrl);
+  }, []);
+
+  // 🔹 Subtasks list
   const [subtasks, setSubtasks] = useState(subtasksData);
   const [openCreate, setOpenCreate] = useState(false);
-
   const [searchTerm, setSearchTerm] = useState('');
-  const [taskFilter, setTaskFilter] = useState(taskIdFromUrl);
-  const [projectFilter, setProjectFilter] = useState(projectIdFromUrl);
   const [statusFilter, setStatusFilter] = useState('all');
 
+  // ✏️ New subtask form
   const [newSubtask, setNewSubtask] = useState({
     name: '',
     description: '',
@@ -94,18 +100,18 @@ const SubtasksPage = () => {
     dueDate: '',
   });
 
-  // Edit dialog
+  // Edit states
   const [editOpen, setEditOpen] = useState(false);
   const [editForm, setEditForm] = useState(null);
 
-  // Progress dialog
+  // Progress states
   const [progressOpen, setProgressOpen] = useState(false);
   const [progressSubtask, setProgressSubtask] = useState(null);
   const [progressInput, setProgressInput] = useState('0');
 
-  const normalize = (value) => value.toLowerCase().replace(/\s+/g, '');
+  const normalize = (v) => v.toLowerCase().replace(/\s+/g, '');
 
-  // 🔍 Filtered subtasks
+  // 🔍 Filtering logic
   const filteredSubtasks = useMemo(
     () =>
       subtasks.filter((subtask) => {
@@ -144,11 +150,11 @@ const SubtasksPage = () => {
     return { total, completed, inProgress, notStarted };
   }, [subtasks]);
 
-  // ➕ Add Subtask
+  // ➕ Add subtask
   const handleAddSubtask = () => {
     if (!newSubtask.name || !newSubtask.taskId || !newSubtask.assignee) {
       toast.error('Missing required fields', {
-        description: 'Please fill in subtask name, parent task, and assignee.',
+        description: 'Please fill name, parent task and assignee.',
       });
       return;
     }
@@ -161,7 +167,7 @@ const SubtasksPage = () => {
     setSubtasks((prev) => [subtaskToAdd, ...prev]);
 
     toast.success('Subtask created successfully', {
-      description: `${newSubtask.name} has been added.`,
+      description: `${newSubtask.name} added.`,
     });
 
     setNewSubtask({
@@ -181,7 +187,7 @@ const SubtasksPage = () => {
   const handleDeleteSubtask = (id, name) => {
     setSubtasks((prev) => prev.filter((st) => st.id !== id));
     toast.info('Subtask deleted', {
-      description: `${name} has been removed.`,
+      description: `${name} deleted.`,
     });
   };
 
@@ -192,9 +198,9 @@ const SubtasksPage = () => {
   };
 
   const handleUpdateSubtask = () => {
-    if (!editForm?.name || !editForm?.taskId || !editForm?.assignee) {
+    if (!editForm.name || !editForm.taskId || !editForm.assignee) {
       toast.error('Missing required fields', {
-        description: 'Please fill in subtask name, parent task, and assignee.',
+        description: 'Fill name, parent task & assignee.',
       });
       return;
     }
@@ -204,7 +210,7 @@ const SubtasksPage = () => {
     );
 
     toast.success('Subtask updated', {
-      description: `${editForm.name} has been updated.`,
+      description: `${editForm.name} updated.`,
     });
 
     setEditOpen(false);
@@ -223,26 +229,25 @@ const SubtasksPage = () => {
 
     let value = parseInt(progressInput, 10);
     if (Number.isNaN(value)) value = 0;
-    if (value < 0) value = 0;
-    if (value > 100) value = 100;
+    value = Math.max(0, Math.min(100, value));
 
     setSubtasks((prev) =>
       prev.map((st) => {
         if (st.id !== progressSubtask.id) return st;
 
-        const nextStatus =
+        const newStatus =
           value === 100
             ? 'Completed'
             : st.status === 'Completed'
             ? 'In Progress'
             : st.status;
 
-        return { ...st, progress: value, status: nextStatus };
+        return { ...st, progress: value, status: newStatus };
       })
     );
 
     toast.success('Progress updated', {
-      description: `"${progressSubtask.name}" is now ${value}% complete.`,
+      description: `"${progressSubtask.name}" is now ${value}%.`,
     });
 
     setProgressOpen(false);
