@@ -30,31 +30,37 @@ const SecurityCard = ({
   return (
     <Card className="border border-slate-200 shadow-sm bg-white">
       <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg border border-primary/10">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          {/* Left side: Icon + title */}
+          <div className="flex items-start gap-3">
+            <div className="p-2 rounded-lg border border-primary/10 bg-primary/5">
               <Shield className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <CardTitle className="text-xl text-slate-900">
+              <CardTitle className="text-lg sm:text-xl text-slate-900">
                 Security Settings
               </CardTitle>
-              <CardDescription className="text-slate-600">
+              <CardDescription className="text-slate-600 text-sm sm:text-base">
                 Manage your password and account security
               </CardDescription>
             </div>
           </div>
+
+          {/* Right side: Button */}
           {!showPasswordForm && (
-            <Button
-              variant="outline"
-              onClick={() => setShowPasswordForm(true)}
-              className="border-slate-300 text-slate-700 hover:bg-slate-50"
-            >
-              Change Password
-            </Button>
+            <div className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                onClick={() => setShowPasswordForm(true)}
+                className="w-full sm:w-auto border-slate-300 text-slate-700 hover:bg-slate-50"
+              >
+                Change Password
+              </Button>
+            </div>
           )}
         </div>
       </CardHeader>
+
       <CardContent>
         {showPasswordForm ? (
           <div className="space-y-4">

@@ -80,28 +80,36 @@ const UserManagementSection = ({ users, onDeleteUser }) => {
 
   return (
     <Card className="bg-white shadow-sm border-slate-200">
-      <CardHeader>
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-          <div>
-            <CardTitle className="text-slate-800">User Management</CardTitle>
-            <CardDescription>
+      <CardHeader className="space-y-4">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          {/* Title + description */}
+          <div className="text-left">
+            <CardTitle className="text-slate-800 text-lg sm:text-xl">
+              User Management
+            </CardTitle>
+            <CardDescription className="text-sm text-slate-500">
               Manage user accounts, roles, and permissions
             </CardDescription>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-            <div className="relative flex-1 lg:min-w-80">
+
+          {/* Filters & search */}
+          <div className="flex flex-col gap-3 w-full md:w-auto">
+            {/* Search bar */}
+            <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 h-4 w-4" />
               <Input
                 placeholder="Search users..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-white border-slate-300 focus:ring-2 focus:ring-primary/60"
+                className="pl-10 bg-white border-slate-300 focus:ring-2 focus:ring-primary/60 w-full"
               />
             </div>
-            <div className="flex gap-2">
+
+            {/* Filters */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:flex md:flex-row md:gap-2">
               <Select value={roleFilter} onValueChange={setRoleFilter}>
-                <SelectTrigger className="w-[140px] bg-white border-slate-300 focus:ring-2 focus:ring-primary/60">
-                  <Filter className="h-4 w-4 mr-2" />
+                <SelectTrigger className="w-full sm:w-full md:w-[140px] bg-white border-slate-300 focus:ring-2 focus:ring-primary/60">
+                  <Filter className="h-4 w-4 mr-2 hidden md:inline-block" />
                   <SelectValue placeholder="Role" />
                 </SelectTrigger>
                 <SelectContent>
@@ -112,8 +120,9 @@ const UserManagementSection = ({ users, onDeleteUser }) => {
                   <SelectItem value="viewer">Viewer</SelectItem>
                 </SelectContent>
               </Select>
+
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-[140px] bg-white border-slate-300 focus:ring-2 focus:ring-primary/60">
+                <SelectTrigger className="w-full sm:w-full md:w-[140px] bg-white border-slate-300 focus:ring-2 focus:ring-primary/60">
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
                 <SelectContent>
@@ -126,6 +135,7 @@ const UserManagementSection = ({ users, onDeleteUser }) => {
           </div>
         </div>
       </CardHeader>
+
       <CardContent>
         {filteredUsers.length === 0 ? (
           <div className="text-center py-12">
