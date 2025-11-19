@@ -18,7 +18,7 @@ import {
   CardContent,
 } from '@/components/ui/card';
 import { BarChart3, DollarSign, Activity } from 'lucide-react';
-import { COLORS } from '@/app/admin/reports/page'; // adjust path if different
+import { COLORS } from '@/components/reports/ReportModule'; // adjust path if different
 
 const getReportTypeIcon = (type) => {
   switch (type) {
