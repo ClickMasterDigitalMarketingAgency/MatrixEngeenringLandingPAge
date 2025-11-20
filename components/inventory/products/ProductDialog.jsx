@@ -34,7 +34,7 @@ const ProductDialog = ({
     <div className="flex justify-between items-center">
       <div>
         <h2 className="text-xl font-semibold text-slate-800">
-          Product Inventory
+          Inventory Items
         </h2>
         <p className="text-slate-600">
           Manage your product master and stock in one place.
@@ -56,7 +56,7 @@ const ProductDialog = ({
             onClick={onResetForm}
           >
             <PackagePlus className="mr-2 h-4 w-4" />
-            Add Product
+            Add Items
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-2xl animate-scale-in bg-white">

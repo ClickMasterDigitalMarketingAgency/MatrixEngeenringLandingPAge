@@ -273,7 +273,7 @@ export default function VendorsManagementPage() {
       {/* Header */}
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
         <div>
-          <h1>Vendor Management</h1>
+          <h1>Vendor & Supplier Management</h1>
           <p className="text-slate-600 mt-2 text-lg">
             Manage supplier relationships, performance, and contracts in one
             place.

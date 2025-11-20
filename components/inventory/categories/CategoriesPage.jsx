@@ -100,7 +100,7 @@ export default function CategoriesPage() {
       {/* Header */}
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
         <div className="flex-1">
-          <h1>Category Hierarchy</h1>
+          <h1>Material Category</h1>
           <p className="text-slate-600 mt-2 text-lg">
             See inventory grouped by categories with stock and value impact.
           </p>

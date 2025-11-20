@@ -107,7 +107,7 @@ const menuItems = [
     children: [
       {
         title: 'All Projects',
-        url: '/admin/projects',
+        url: '/admin/project-management/projects',
         icon: FolderKanban,
       },
       // {
@@ -139,17 +139,17 @@ const menuItems = [
       // },
       {
         title: 'Task Management',
-        url: '/admin/projects/tasks',
+        url: '/admin/project-management/tasks',
         icon: ClipboardList,
       },
       {
         title: 'Material Allocation',
-        url: '/admin/projects/material-allocation',
+        url: '/admin/project-management/material-allocation',
         icon: Package,
       },
       {
         title: 'Project Progress Tracking',
-        url: '/admin/projects/progress',
+        url: '/admin/project-management/progress',
         icon: Target,
       },
     ],
@@ -160,7 +160,7 @@ const menuItems = [
     children: [
       {
         title: 'All Users',
-        url: '/admin/users',
+        url: '/admin/users/allUsers',
         icon: Users,
       },
       {

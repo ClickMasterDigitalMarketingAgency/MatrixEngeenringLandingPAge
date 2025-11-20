@@ -8,7 +8,7 @@ const InventoryHeader = () => {
   return (
     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
       <div className="flex-1">
-        <h1>Products & Inventory</h1>
+        <h1>Inventory Material</h1>
         <p className="text-slate-600 mt-2 text-lg">
           Maintain product master data and track stock for each item.
         </p>

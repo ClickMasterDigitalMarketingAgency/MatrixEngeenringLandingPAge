@@ -27,7 +27,7 @@ const TasksHeader = ({
     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
       <div className="flex-1">
         <div className="flex items-center gap-3 mb-2">
-          <h1>Tasks</h1>
+          <h1>Tasks Management</h1>
         </div>
         <p className="text-slate-600 text-lg">
           Manage and track all project tasks in one place.

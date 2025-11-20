@@ -36,7 +36,7 @@ const ProductsTable = ({
   return (
     <Card className="border border-slate-200 bg-white shadow-sm">
       <CardHeader className="pb-4">
-        <CardTitle className="text-slate-800">Product Inventory</CardTitle>
+        <CardTitle className="text-slate-800">Inventory Items</CardTitle>
         <CardDescription>
           All products with stock, location, and vendor mapping.
         </CardDescription>
@@ -56,7 +56,7 @@ const ProductsTable = ({
           <Table>
             <TableHeader className="bg-slate-50">
               <TableRow>
-                <TableHead>Product</TableHead>
+                <TableHead>Item</TableHead>
                 <TableHead>Category</TableHead>
                 <TableHead>Quantity</TableHead>
                 <TableHead>Stock Level</TableHead>

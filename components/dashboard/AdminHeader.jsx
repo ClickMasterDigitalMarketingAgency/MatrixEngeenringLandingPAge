@@ -56,7 +56,7 @@ const AdminHeader = ({ onAddUser }) => {
   return (
     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
       <div className="flex-1">
-        <h1 >
+        <h1>
           Admin Dashboard
         </h1>
         <p className="text-slate-600 mt-2 text-lg">
