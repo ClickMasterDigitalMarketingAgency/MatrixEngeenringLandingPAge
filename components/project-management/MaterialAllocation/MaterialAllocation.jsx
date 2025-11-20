@@ -95,60 +95,65 @@ const MaterialAllocation = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1>Material Allocation</h1>
-          <p className="text-muted-foreground">Allocate materials to projects</p>
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0">
+  <div>
+    <h1>Material Allocation</h1>
+    <p className="text-muted-foreground">Allocate materials to projects</p>
+  </div>
+
+  <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+    <DialogTrigger asChild>
+      <Button onClick={resetForm} className="gap-2">
+        <Plus className="h-4 w-4" /> Allocate Material
+      </Button>
+    </DialogTrigger>
+    <DialogContent className="sm:max-w-[600px] w-full">
+      <DialogHeader>
+        <DialogTitle>{editingAllocation ? "Edit Allocation" : "Allocate Material"}</DialogTitle>
+      </DialogHeader>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="project">Project</Label>
+            <Input id="project" placeholder="Enter project name" value={formData.project} onChange={e => setFormData({...formData, project: e.target.value})} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="material">Material</Label>
+            <Input id="material" placeholder="Enter material name" value={formData.material} onChange={e => setFormData({...formData, material: e.target.value})} required />
+          </div>
         </div>
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button onClick={resetForm} className="gap-2">
-              <Plus className="h-4 w-4" /> Allocate Material
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[600px]">
-            <DialogHeader>
-              <DialogTitle>{editingAllocation ? "Edit Allocation" : "Allocate Material"}</DialogTitle>
-            </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="project">Project</Label>
-                  <Input id="project" value={formData.project} onChange={e => setFormData({...formData, project: e.target.value})} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="material">Material</Label>
-                  <Input id="material" value={formData.material} onChange={e => setFormData({...formData, material: e.target.value})} required />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="quantity">Quantity</Label>
-                  <Input id="quantity" type="number" value={formData.quantity} onChange={e => setFormData({...formData, quantity: parseInt(e.target.value)})} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="unit">Unit</Label>
-                  <Input id="unit" value={formData.unit} onChange={e => setFormData({...formData, unit: e.target.value})} required />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="allocatedDate">Allocation Date</Label>
-                  <Input id="allocatedDate" type="date" value={formData.allocatedDate} onChange={e => setFormData({...formData, allocatedDate: e.target.value})} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="allocatedBy">Allocated By</Label>
-                  <Input id="allocatedBy" value={formData.allocatedBy} onChange={e => setFormData({...formData, allocatedBy: e.target.value})} required />
-                </div>
-              </div>
-              <div className="flex gap-2 justify-end">
-                <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>Cancel</Button>
-                <Button type="submit">{editingAllocation ? "Update" : "Allocate"}</Button>
-              </div>
-            </form>
-          </DialogContent>
-        </Dialog>
-      </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="quantity">Quantity</Label>
+            <Input id="quantity" type="number" placeholder="Enter quantity" value={formData.quantity} onChange={e => setFormData({...formData, quantity: parseInt(e.target.value)})} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="unit">Unit</Label>
+            <Input id="unit" placeholder="Enter unit" value={formData.unit} onChange={e => setFormData({...formData, unit: e.target.value})} required />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="allocatedDate">Allocation Date</Label>
+            <Input id="allocatedDate" type="date" value={formData.allocatedDate} onChange={e => setFormData({...formData, allocatedDate: e.target.value})} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="allocatedBy">Allocated By</Label>
+            <Input id="allocatedBy" placeholder="Enter allocator name" value={formData.allocatedBy} onChange={e => setFormData({...formData, allocatedBy: e.target.value})} required />
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-2 justify-end">
+          <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>Cancel</Button>
+          <Button type="submit">{editingAllocation ? "Update" : "Allocate"}</Button>
+        </div>
+      </form>
+    </DialogContent>
+  </Dialog>
+</div>
+
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

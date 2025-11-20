@@ -8,15 +8,16 @@ const ReportsHeader = ({ onExport, onAdvancedFilter }) => {
     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 w-full">
 
       {/* Left section */}
-      <div className="flex-1 text-left">
-        <h1 className="whitespace-nowrap">
-          Analytics Dashboard
-        </h1>
+    <div className="flex-1 text-left">
+  <h1 className="whitespace-nowrap">
+    Analytics
+  </h1>
 
-        <p className="text-slate-600 mt-1 text-base whitespace-nowrap">
-          Comprehensive business intelligence and performance metrics
-        </p>
-      </div>
+  <p className="text-slate-600 mt-1 text-base sm:whitespace-nowrap break-words">
+    Comprehensive business intelligence and performance metrics
+  </p>
+</div>
+
 
       {/* Buttons section */}
       <div
