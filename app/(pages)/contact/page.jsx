@@ -45,10 +45,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log('Form submitted:', formData);
-
     setIsSubmitting(false);
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
@@ -91,7 +88,6 @@ const Contact = () => {
             className="object-cover object-center"
             priority
           />
-      
         </motion.div>
 
         <div className="absolute inset-0 flex items-center justify-center">
@@ -116,10 +112,11 @@ const Contact = () => {
         </div>
       </section>
 
-      <main className="py-16 px-36 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* MAIN */}
+      <main className="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-28">
+        <div className="container mx-auto px-2 sm:px-4">
           <FadeInWhenVisible>
-            <div className="max-w-7xl mx-auto text-center mb-20">
+            <div className="max-w-7xl mx-auto text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-bold mb-6">
                 Our <span className="text-primary">Branches</span> & Contact
               </h2>
@@ -130,8 +127,9 @@ const Contact = () => {
             </div>
           </FadeInWhenVisible>
 
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-12 xl:gap-16 items-start">
-            {/* Branches Column - Takes 1/3 on XL screens */}
+          {/* GRID FIXED */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-start">
+            {/* Branches */}
             <div className="xl:col-span-1 space-y-8">
               {branches.map((branch, index) => (
                 <FadeInWhenVisible key={branch.title} delay={index * 0.2}>
@@ -139,7 +137,7 @@ const Contact = () => {
                     whileHover={{ y: -8, transition: { duration: 0.3 } }}
                     className="w-full group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-card border border-border"
                   >
-                    <div className="relative w-full h-64 overflow-hidden rounded-t-2xl">
+                    <div className="relative w-full h-48 sm:h-56 md:h-64 overflow-hidden rounded-t-2xl">
                       <Image
                         src={branch.img}
                         alt={branch.title}
@@ -162,6 +160,7 @@ const Contact = () => {
                             {branch.desc}
                           </p>
                         </div>
+
                         <div className="space-y-4">
                           <div className="flex items-center gap-4">
                             <Mail className="w-5 h-5 text-primary flex-shrink-0" />
@@ -188,7 +187,6 @@ const Contact = () => {
                         <div className="text-muted-foreground font-semibold text-lg mb-2">
                           Branch Office
                         </div>
-                     
                       </div>
                     )}
                   </motion.div>
@@ -196,7 +194,7 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Contact Form Column - Takes 2/3 on XL screens */}
+            {/* Form */}
             <div className="xl:col-span-2 xl:sticky xl:top-8">
               <FadeInWhenVisible delay={0.4}>
                 <motion.div
@@ -209,10 +207,9 @@ const Contact = () => {
                     <h3 className="text-3xl md:text-4xl font-bold mb-4">
                       Send Us a Message
                     </h3>
-                
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-8 max-w-4xl mx-auto">
+                  <form className="space-y-8 max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
                       <div className="space-y-3">
                         <label className="block text-base font-semibold text-foreground">
@@ -223,8 +220,8 @@ const Contact = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full px-4 py-4 border border-border rounded-xl focus:ring-3 focus:ring-primary/50 focus:border-primary bg-background transition-all duration-300 text-base"
                           placeholder="Your full name"
+                          className="w-full px-4 py-4 border border-border rounded-xl bg-background focus:ring-3 focus:ring-primary/50 focus:border-primary text-base"
                           required
                         />
                       </div>
@@ -238,8 +235,8 @@ const Contact = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full px-4 py-4 border border-border rounded-xl focus:ring-3 focus:ring-primary/50 focus:border-primary bg-background transition-all duration-300 text-base"
                           placeholder="your.email@example.com"
+                          className="w-full px-4 py-4 border border-border rounded-xl bg-background focus:ring-3 focus:ring-primary/50 focus:border-primary text-base"
                           required
                         />
                       </div>
@@ -254,8 +251,8 @@ const Contact = () => {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 border border-border rounded-xl focus:ring-3 focus:ring-primary/50 focus:border-primary bg-background transition-all duration-300 text-base"
                         placeholder="What is this regarding?"
+                        className="w-full px-4 py-4 border border-border rounded-xl bg-background focus:ring-3 focus:ring-primary/50 focus:border-primary text-base"
                         required
                       />
                     </div>
@@ -269,8 +266,8 @@ const Contact = () => {
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 border border-border rounded-xl focus:ring-3 focus:ring-primary/50 focus:border-primary bg-background transition-all duration-300 resize-none text-base"
                         placeholder="Tell us about your project or inquiry..."
+                        className="w-full px-4 py-4 border border-border rounded-xl bg-background focus:ring-3 focus:ring-primary/50 focus:border-primary resize-none text-base"
                         required
                       />
                     </div>
@@ -280,7 +277,7 @@ const Contact = () => {
                       disabled={isSubmitting}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full lg:w-2/3 mx-auto px-8 py-5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed text-lg block"
+                      className="w-full lg:w-2/3 mx-auto px-8 py-5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all flex items-center justify-center gap-3 disabled:opacity-50 text-lg"
                     >
                       {isSubmitting ? (
                         <>
