@@ -7,90 +7,34 @@ import { Building2, Radio, Network, Zap, Shield } from 'lucide-react';
 const Clients = () => {
   const clients = [
     {
-      name: 'NLC',
+      name: 'NTC',
       icon: Building2,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-13.png?fit=3333%2C3333&ssl=1',
+      logo: '/images/ntc.png',
     },
     {
-      name: 'NOKIA',
+      name: 'zong',
       icon: Radio,
       logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-14.png?fit=3333%2C3333&ssl=1',
     },
     {
-      name: 'Nortel Networks',
+      name: 'ptcl',
       icon: Network,
       logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-15.png?fit=3333%2C3333&ssl=1',
     },
+
+
+
+
     {
-      name: 'Pakistan Atomic Energy',
-      icon: Zap,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-16.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'Pakistan Armed Forces 1',
+      name: 'Nayatel',
       icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-17-1.png?fit=3334%2C3334&ssl=1',
+      logo: 'https://vectorseek.com/wp-content/uploads/2020/12/NAYATEL-logo-vector.png',
     },
-    {
-      name: 'Pakistan Armed Forces 2',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-18-1.png?fit=3334%2C3334&ssl=1',
-    },
-    {
-      name: 'Pakistan Armed Forces 3',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-01.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'Pakistan Armed Forces 4',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-02.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'Pakistan Armed Forces 4',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-03.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'jazz',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-04.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'NHA',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-05.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'NLC',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-06.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'Nokia',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-07.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'Nortal Networks',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-08.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'Pakistan Atomic Energy',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-09.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'Pakistan Police',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-10.png?fit=3333%2C3333&ssl=1',
-    },
-    {
-      name: 'SCO',
-      icon: Shield,
-      logo: 'https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/CLIENTS-LOGOS-11.png?fit=3333%2C3333&ssl=1',
-    },
+
+   
+ 
+  
+   
     {
       name: 'UFONE',
       icon: Shield,

@@ -19,6 +19,9 @@ export function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+const [productsOpen, setProductsOpen] = useState(false);
+
   const navbarRef = useRef(null);
 
   const pathname = usePathname();
@@ -260,123 +263,77 @@ export function Navbar() {
 
             
 
-            {/* SERVICES */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <motion.div
-                  whileHover={{ y: -2 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                >
-                  <Button
-                    variant="ghost"
-                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-primary hover:text-white hover:shadow-lg transition-all duration-300"
-                  >
-                    SERVICES
-                    <motion.div
-                      animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <ChevronDown className="ml-1 h-4 w-4" />
-                    </motion.div>
-                  </Button>
-                </motion.div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                className="w-64 bg-background/95 backdrop-blur-md border-border z-50 shadow-xl"
-                asChild
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {servicesItems.map((item, index) => (
-                    <DropdownMenuItem key={item.path} asChild>
-                      <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                      >
-                        <Link
-                          href={item.path}
-                          className={`w-full cursor-pointer px-3 py-2 rounded-md text-sm transition-all duration-300 ${
-                            isActive(item.path)
-                              ? 'text-primary bg-primary/10 shadow-inner'
-                              : 'hover:bg-primary hover:text-white hover:shadow-lg'
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      </motion.div>
-                    </DropdownMenuItem>
-                  ))}
-                </motion.div>
-              </DropdownMenuContent>
-            </DropdownMenu>
+   {/* SERVICES */}
+<DropdownMenu open={servicesOpen} onOpenChange={setServicesOpen}>
+  <DropdownMenuTrigger asChild>
+    <Button
+      variant="ghost"
+      className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-primary hover:text-white hover:shadow-lg transition-all duration-300"
+    >
+      SERVICES
+      <ChevronDown className="ml-1 h-4 w-4" />
+    </Button>
+  </DropdownMenuTrigger>
 
-            {/* PRODUCTS */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <motion.div
-                  whileHover={{ y: -2 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                >
-                  <Button
-                    variant="ghost"
-                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-primary hover:text-white hover:shadow-lg transition-all duration-300"
-                  >
-                    PRODUCTS
-                    <motion.div
-                      animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <ChevronDown className="ml-1 h-4 w-4" />
-                    </motion.div>
-                  </Button>
-                </motion.div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                className="w-64 bg-background/95 backdrop-blur-md border-border z-50 shadow-xl"
-                asChild
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {productsItems.map((item, index) => (
-                    <DropdownMenuItem key={item.path} asChild>
-                      <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                      >
-                        <Link
-                          href={item.path}
-                          className={`w-full cursor-pointer px-3 py-2 rounded-md text-sm transition-all duration-300 ${
-                            isActive(item.path)
-                              ? 'text-primary bg-primary/10 shadow-inner'
-                              : 'hover:bg-primary hover:text-white hover:shadow-lg'
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      </motion.div>
-                    </DropdownMenuItem>
-                  ))}
-                </motion.div>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <motion.div
+  <DropdownMenuContent className="w-64 bg-background/95 backdrop-blur-md border-border z-50 shadow-xl">
+    <motion.div
               whileHover={{ y: -2 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-             
-            </motion.div>
+    {servicesItems.map((item) => (
+      <DropdownMenuItem key={item.path} asChild>
+        <Link
+          href={item.path}
+          onClick={() => setServicesOpen(false)} // Close dropdown on click
+          className={`w-full cursor-pointer px-3 py-2 rounded-md text-sm transition-all duration-300 ${
+            isActive(item.path)
+              ? 'text-primary bg-primary/10 shadow-inner'
+              : 'hover:bg-primary hover:text-white hover:shadow-lg'
+          }`}
+        >
+          {item.label}
+        </Link>
+      </DropdownMenuItem>
+    ))}</motion.div>
+  </DropdownMenuContent>
+</DropdownMenu>
 
+{/* PRODUCTS */}
+<DropdownMenu open={productsOpen} onOpenChange={setProductsOpen}>
+  <DropdownMenuTrigger asChild>
+    <Button
+      variant="ghost"
+      className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-primary hover:text-white hover:shadow-lg transition-all duration-300"
+    >
+      PRODUCTS
+      <ChevronDown className="ml-1 h-4 w-4" />
+    </Button>
+  </DropdownMenuTrigger>
+
+  <DropdownMenuContent className="w-64 bg-background/95 backdrop-blur-md border-border z-50 shadow-xl">
+    <motion.div
+              whileHover={{ y: -2 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+            >
+    {productsItems.map((item) => (
+      <DropdownMenuItem key={item.path} asChild>
+        <Link
+          href={item.path}
+          onClick={() => setProductsOpen(false)} // Close dropdown on click
+          className={`w-full cursor-pointer px-3 py-2 rounded-md text-sm transition-all duration-300 ${
+            isActive(item.path)
+              ? 'text-primary bg-primary/10 shadow-inner'
+              : 'hover:bg-primary hover:text-white hover:shadow-lg'
+          }`}
+        >
+          {item.label}
+        </Link>
+      </DropdownMenuItem>
+    ))}</motion.div>
+  </DropdownMenuContent>
+</DropdownMenu>
+
+           
             <motion.div
               whileHover={{ y: -2 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
@@ -395,24 +352,7 @@ export function Navbar() {
               </Link>
             </motion.div>
 
-            {/* LOGIN */}
-            <motion.div
-              whileHover={{ y: -2 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-            >
-              <Link href="/login">
-                <Button
-                  variant="ghost"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                    isActive('/login')
-                      ? 'text-primary bg-primary/10 shadow-inner'
-                      : 'text-gray-800 hover:bg-primary hover:text-white hover:shadow-lg'
-                  }`}
-                >
-                  LOGIN
-                </Button>
-              </Link>
-            </motion.div>
+           
           </div>
 
           {/* Mobile Menu Button */}
