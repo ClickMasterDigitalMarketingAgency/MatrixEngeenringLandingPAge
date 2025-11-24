@@ -28,7 +28,7 @@ const Clients = () => {
     {
       name: 'Nayatel',
       icon: Shield,
-      logo: 'https://vectorseek.com/wp-content/uploads/2020/12/NAYATEL-logo-vector.png',
+      logo: '/images/nayaTel.png',
     },
 
    
