@@ -55,12 +55,12 @@ const sectionVariants = {
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      Metrix Engineering Services provides a full range of Radio
+                      Matrix Engineering Services provides a full range of Radio
                       Frequency engineering expertise across all telecom
                       protocols—GSM, GPRS, EDGE, CDMA, WCDMA, and LTE (4G). We
                       are RF Design Consultants Pakistan specializing in the
                       design, testing, and Network Performance Improvement of
-                      mobile networks. Metrix Engineering Services offers a full
+                      mobile networks. Matrix Engineering Services offers a full
                       spectrum of technical capabilities, services, and tools to
                       design and fine-tune wireless networks. Our highly trained
                       team of RF engineers are experts at applying RF design,

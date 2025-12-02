@@ -113,7 +113,7 @@ export default function Cabinets() {
             <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Metrix Engineering Services, in partnership with a leading
+                  Matrix Engineering Services, in partnership with a leading
                   global supplier, is a key provider of all types of Telecom
                   Cabinets Pakistan. We manufacture all required types of indoor
                   and outdoor telecom cabinets and temperature control solutions

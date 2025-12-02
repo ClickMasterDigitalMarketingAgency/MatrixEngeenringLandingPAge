@@ -58,7 +58,7 @@ const sectionVariants = {
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      Metrix Engineering Services retains highly skilled and
+                      Matrix Engineering Services retains highly skilled and
                       trained construction experts, coordinators, and managers
                       prepared to handle complex wireless infrastructure
                       projects. Our dedicated team uses established construction
@@ -68,7 +68,7 @@ const sectionVariants = {
                       site development activities.
                     </p>
                     <p>
-                      Metrix Engineering Services specializes in complete
+                      Matrix Engineering Services specializes in complete
                       Turnkey Telecom Tower Construction, from initial Telecom
                       Tower Foundation Engineering to final tower completion and
                       maintenance. Our team of experienced professionals

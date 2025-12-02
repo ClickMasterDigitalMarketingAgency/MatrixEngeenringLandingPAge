@@ -71,7 +71,7 @@ const sectionVariants = {
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      Metrix Engineering Services is an established Civil Works
+                      Matrix Engineering Services is an established Civil Works
                       Design and engineering company. We approach all Buildings
                       and Roads Construction with both technical reliability and
                       visual consideration, ensuring projects function
@@ -83,7 +83,7 @@ const sectionVariants = {
                       projects, from Dams to Highways and Buildings, we are
                       prepared for any task. Our team is accustomed to working
                       in diverse conditions and meeting demanding deadlines,
-                      allowing Metrix Engineering to be a reliable partner in
+                      allowing Matrix Engineering to be a reliable partner in
                       the field of large-scale Infrastructure Construction
                       Services in Pakistan.
                     </p>
@@ -117,7 +117,7 @@ const sectionVariants = {
                 {/* Expertise Section */}
                 <div className="mt-16">
                   <h3 className="text-2xl md:text-3xl  mb-8 text-primary">
-                    Metrix Engineering Services Offers Services in Road &
+                    Matrix Engineering Services Offers Services in Road &
                     Infrastructure Sector:
                   </h3>
                   <div className="space-y-3">
@@ -135,7 +135,7 @@ const sectionVariants = {
                 {/* Expertise Section */}
                 <div className="mt-16">
                   <h3 className="text-2xl md:text-3xl  mb-8 text-primary">
-                    Metrix Engineering Services Offers Services in Buildings
+                    Matrix Engineering Services Offers Services in Buildings
                     Sector:
                   </h3>
                   <div className="space-y-3">

@@ -36,7 +36,7 @@ const GalvanizedTelecom = () => {
               </h1>
               <div className="space-y-4 text-foreground/80 leading-relaxed">
                 <p>
-                  Metrix Engineering Services manufactures numerous value-added
+                  Matrix Engineering Services manufactures numerous value-added
                   Galvanized Telecom Towers and Steel Structures products, such
                   as lattice towers, solar structures, pole towers, and monopole
                   towers. We supply structural components essential for mobile

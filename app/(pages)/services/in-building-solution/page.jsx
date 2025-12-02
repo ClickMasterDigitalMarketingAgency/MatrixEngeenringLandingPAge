@@ -77,7 +77,7 @@ const sectionVariants = {
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      Metrix Engineering Services has significant experience in
+                      Matrix Engineering Services has significant experience in
                       the planning, design, setup, Commissioning checklist, and
                       refinement of comprehensive In-Building Coverage Solutions
                       (IBS), including Distributed Antenna System (DAS)
@@ -112,15 +112,15 @@ const sectionVariants = {
 
                   <div className="space-y-4 text-muted-foreground mb-12 md:col-span-2">
                     <p>
-                      Metrix Engineering Services operates as an end to end
+                      Matrix Engineering Services operates as an end to end
                       telecom services integrator, providing a full portfolio of
                       products for both passive and active system solutions.
                     </p>
                     <p>
                       By applying the most current radio planning tools and
-                      high-quality materials, Metrix Engineering Services
+                      high-quality materials, Matrix Engineering Services
                       ensures the most effective, cost-efficient solutions for
-                      our customers. Metrix Engineering Services maintains
+                      our customers. Matrix Engineering Services maintains
                       significant experience in the physical deployment of
                       in-building coverage solutions
                     </p>
@@ -148,7 +148,7 @@ const sectionVariants = {
                 {/* Services Section */}
                 <div className="mt-16">
                   <p className="text-muted-foreground mb-8">
-                    Metrix Engineering Services holds the necessary knowledge
+                    Matrix Engineering Services holds the necessary knowledge
                     and technical skills to successfully manage the complete
                     IBS/DAS project cycle from planning to execution:
                   </p>

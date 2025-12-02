@@ -28,7 +28,7 @@ export default function AboutPage() {
           <div className="space-y-6">
             <h1 className="text-5xl md:text-6xl font-bold text-balance leading-tight">
               About{' '}
-              <span className="text-primary">Metrix Engineering Services</span>
+              <span className="text-primary">Matrix Engineering Services</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
               A quality-driven, partnership-focused telecom infrastructure
@@ -44,14 +44,14 @@ export default function AboutPage() {
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-                Why Metrix Engineering Services is Different
+                Why Matrix Engineering Services is Different
               </h2>
               <div className="space-y-4">
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   We are quality driven, partnership focused, and dedicated to
                   client success.{' '}
                   <span className="font-semibold text-foreground">
-                    Metrix Engineering Services
+                    Matrix Engineering Services
                   </span>{' '}
                   is a prominent telecom infrastructure company in Pakistan that
                   delivers full End-to-End Telecom Services across the country.
@@ -71,7 +71,7 @@ export default function AboutPage() {
                   providing network lifecycle services in Pakistan.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Metrix Engineering Services helps customers manage their
+                  Matrix Engineering Services helps customers manage their
                   infrastructure more efficiently, offering reliability and
                   helping reduce operational costs. We work directly with
                   Telecom Carriers/Operators and OEMs to deliver comprehensive
@@ -186,7 +186,7 @@ export default function AboutPage() {
               improve.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              At Metrix Engineering Services, we appreciate this work, as it
+              At Matrix Engineering Services, we appreciate this work, as it
               calls for our best efforts in supporting our valuable clients. We
               are committed to remaining a leading service provider, meeting our
               customers' operational needs, and benefiting the communities where
@@ -197,7 +197,7 @@ export default function AboutPage() {
               community.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Metrix Engineering Services has played a key role over the years
+              Matrix Engineering Services has played a key role over the years
               in helping facilitate all related network lifecycle services in
               Pakistan, including Telecom Civil Infrastructure Buildout, Telecom
               Equipment Installation and Commissioning Services, and tower
@@ -209,7 +209,7 @@ export default function AboutPage() {
               thoughtful judgment. To address this complexity, our ethical
               guidelines guide us in making the correct choices as individuals
               and as a company. Following these guidelines is the duty of
-              everyone at Metrix Engineering Services. By operating with this
+              everyone at Matrix Engineering Services. By operating with this
               responsibility, we create a positive impact on our industry, the
               communities where we work, and build a company we can all stand
               behind, where corporate accountability provides a distinct
@@ -221,7 +221,7 @@ export default function AboutPage() {
                 Kamal Mumtaz,
                 <br />
                 <span className="text-primary">
-                  CEO, Metrix Engineering Services
+                  CEO, Matrix Engineering Services
                 </span>
               </p>
             </div>

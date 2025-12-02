@@ -36,7 +36,7 @@ export default function page() {
                       with weak or absent grid power. The common solution for
                       these Off-Grid telecom sites continues to be Diesel
                       Generator systems, which incur high fuel expenditures and
-                      environmental costs. Metrix Engineering Services's
+                      environmental costs. Matrix Engineering Services's
                       integrated micro-grid solutions provide a clean, reliable,
                       and cost-effective alternative for Diesel Generator
                       Replacement within the telecom industry.

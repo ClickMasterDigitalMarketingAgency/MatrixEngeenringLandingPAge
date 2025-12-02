@@ -51,7 +51,7 @@ export const Solutions = () => {
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-4"></div>
           <p className="text-muted-foreground">
-            Metrix Engineering Services has developed several specialized IT
+            Matrix Engineering Services has developed several specialized IT
             security and digital solutions for our clients, as listed below.
           </p>
         </div>

@@ -27,7 +27,7 @@ const CellOnWheelTowers = () => {
               <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Metrix Engineering Services is a leading manufacturer of
+                    Matrix Engineering Services is a leading manufacturer of
                     portable and fixed tower structures. These systems are used
                     in many sectors to provide mobile wireless communications
                     solutions. We build and perform the Commissioning checklist
@@ -43,7 +43,7 @@ const CellOnWheelTowers = () => {
                     Towers to perform reliably when needed most.
                   </p>
                   <p>
-                    Metrix Engineering Services COWs are well-equipped with the
+                    Matrix Engineering Services COWs are well-equipped with the
                     necessary systems for mobile site operation. We use our
                     extensive experience in the Telecom Industry to build
                     systems that are operator-friendly, rigid, and strong enough
@@ -68,7 +68,7 @@ const CellOnWheelTowers = () => {
 
                 <div className="space-y-4 text-muted-foreground mb-12 md:col-span-2">
                   <p>
-                    Metrix Engineering Services mobile cellular site features
+                    Matrix Engineering Services mobile cellular site features
                     include: Single-person operation, full integration to allow
                     installation and setup to be completed within 2 hours upon
                     arrival. The articulate mast design, with guy wires,

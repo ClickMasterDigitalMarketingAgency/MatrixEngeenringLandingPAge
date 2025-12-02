@@ -51,7 +51,7 @@ const DiselGenerators = () => {
                     continuous operation.
                   </p>
                   <p>
-                    Metrix Engineering Services can provide Diesel Generator
+                    Matrix Engineering Services can provide Diesel Generator
                     systems in a short timeframe across all major Pakistan
                     cities, along with complete installation, operation, and
                     Operations & Maintenance (O&M) services. Our solutions
