@@ -120,18 +120,18 @@ export function Navbar() {
                 alt="logo"
                 width={50}
                 height={50}
-                className="w-10 h-10 sm:w-14 sm:h-14"
+                className="w-14 h-14 sm:w-23 sm:h-23"
                 priority
               />
               <div className="ml-2 leading-tight">
-                <span className="text-base sm:text-xl font-bold text-primary block">
-                  MATRIX ENGINEERING
+                <span className="text-md sm:text-2xl font-bold text-primary block">
+                  MATRIX SERVICES
                 </span>
-                <span className="text-base sm:text-xl font-bold text-primary block -mt-1">
+                {/* <span className="text-base sm:text-xl font-bold text-primary block -mt-1">
                   SERVICES
-                </span>
-                <div className="text-[10px] sm:text-xs -mt-1 text-foreground">
-                  PRIVATE LIMITED
+                </span> */}
+                <div className="text-[10px] sm:text-sm -mt-1 text-foreground font-medium">
+                  PVT LIMITED
                 </div>
               </div>
             </Link>

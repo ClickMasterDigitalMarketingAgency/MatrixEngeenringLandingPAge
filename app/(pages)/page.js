@@ -16,7 +16,7 @@ const sectionVariants = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className=" bg-background">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -24,8 +24,8 @@ export default function Home() {
         variants={sectionVariants}
       >
         <Hero />
-      </motion.div>
-
+    
+{/* 
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -33,14 +33,10 @@ export default function Home() {
         variants={sectionVariants}
       >
         <Stats />
-      </motion.div>
+      </motion.div> */}
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={sectionVariants}
-      >
+    
+    
         <About />
       </motion.div>
 
@@ -70,6 +66,7 @@ export default function Home() {
       >
         <Clients />
       </motion.div>
+      
 
       <motion.div
         initial="hidden"
