@@ -24,12 +24,12 @@ const Logistics = () => {
       <div className="min-h-screen">
         <main>
           {/* Hero Banner */}
-          <section className="relative h-[250px] md:h-[300px] overflow-hidden">
+          <section className="relative h-[250px] md:h-[450px] overflow-hidden">
             <Image
-              src="/images/logisticsAndWarehouse.png"
+              src="/images/warehouse-image.jpg"
               alt="Telecom Equipment Installation"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[50%_85%]"
               priority
             />
             <div className="absolute inset-0 flex items-center justify-center"></div>

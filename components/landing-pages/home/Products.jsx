@@ -82,7 +82,7 @@ const products = [
   },
   {
     icon: RadioTower,
-    title: 'Rapid Deployment Cell Towers',
+    title: 'Cell on Wheel (COW)',
     url: '/products/cow',
     description:
       'Quickly deployable Cell on Wheel (COW) Towers for immediate coverage during emergencies and special events.',
@@ -99,7 +99,7 @@ const products = [
   {
     icon: Factory,
     title: 'Galvanized Steel Structures',
-    url: '/products/towers',
+    url: '/products/galvanized-towers',
     description:
       'In-house manufacturing of galvanized steel structures and custom antenna mounts with high strength.',
     imageSrc: '/images/steel-structures.jpg',
@@ -115,19 +115,12 @@ const products = [
   {
     icon: TowerControl,
     title: 'Tower',
-    url: '/products/solar',
+    url: '/products/towers',
     description:
       'High-strength galvanized steel towers for reliable network infrastructure, designed for durability and optimal signal transmission in all weather conditions.',
     imageSrc: '/images/telecom-grid.jpg',
   },
-  {
-    icon: Truck,
-    title: 'Cell on Wheel (COW)',
-    url: '/products/solar',
-    description:
-      'Mobile cellular towers for rapid deployment during emergencies, events, or temporary coverage needs, providing instant network connectivity anywhere.',
-    imageSrc: '/images/cow-tower.jpg',
-  },
+
 ];
 
 const Products = () => {

@@ -32,7 +32,7 @@ const sectionVariants = {
       <div className="min-h-screen">
         <main>
           {/* Hero Banner */}
-          <section className="relative h-[250px] md:h-[300px] overflow-hidden">
+          <section className="relative h-[250px] md:h-[450px] overflow-hidden">
             <Image
               src="/images/it tower.jpg"
               alt="Telecom Equipment Installation"

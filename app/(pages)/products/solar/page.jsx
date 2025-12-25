@@ -8,15 +8,15 @@ export default function page() {
       <div className="min-h-screen">
         <main>
           {/* Hero Banner */}
-          <section className="relative w-full h-[250px] md:h-[350px] overflow-hidden">
+          <section className="relative w-full h-[250px] md:h-[450px] overflow-hidden">
             <Image
-              src="/images/solarEnergy.png"
+              src="/images/solar.jpg"
               alt="Telecom Equipment Installation"
               fill
               className="object-cover object-center"
               priority
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/40"></div>
+            <div className="absolute inset-0 flex items-center justify-center "></div>
           </section>
 
           {/* Content Section */}

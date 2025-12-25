@@ -1,26 +1,27 @@
 import Image from 'next/image';
 
-const GalvanizedTelecom = () => {
+const Towers = () => {
   const services = [
-    'Mechanical Fabrication for Industrial Structures and Shelters',
-    'Fabrication of Self-Supporting Towers of any required height',
-    'Fabrication of security sheds, Cable Bridges, and Antenna Mounts',
-    'Fabrication of various Steel Trusses and Girders',
-    'In-house Hot Dip Galvanizing Facility',
-    'Fabrication of Cell on Wheel (COW) Towers frames and components',
-    'Fabrication of integrated Solar Structures',
+    'Fabrication of Self-Supporting Lattice Telecom Towers',
+    'Manufacturing of Monopoles and Pole Towers',
+    'Rooftop Telecom Tower Structures',
+    'Tower Members, Bracing Systems, and Base Plates',
+    'Antenna and Microwave Mount Fabrication',
+    'Hot Dip Galvanizing of Telecom Towers',
+    'Tower Strengthening and Modification Works',
   ];
+
 
   return (
     <>
       <div className="min-h-screen bg-background">
         {/* Hero Banner (full-width, responsive height) */}
-        <section className="relative w-full h-[250px] md:h-[350px] overflow-hidden">
+        <section className="relative w-full h-[250px] md:h-[450px] overflow-hidden">
           <Image
-            src="/images/elect.png"
+            src="/images/tower-image.jpg"
             alt="Telecom Equipment Installation"
             fill
-            className="object-cover object-center"
+            className="object-cover object-[50%_30%]"
             priority
           />
         </section>
@@ -31,26 +32,35 @@ const GalvanizedTelecom = () => {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-16">
             <div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                Galvanized <span className="text-primary">Telecom Towers</span>{' '}
-                and <span className="text-primary">Steel</span> Structures
+               <span className="text-primary">Telecom Towers</span>{' '}
+                
               </h1>
               <div className="space-y-4 text-foreground/80 leading-relaxed">
                 <p>
                   Matrix Engineering Services manufactures numerous value-added
-                  Galvanized Telecom Towers and Steel Structures products, such
+                  Telecom Towers and Steel Structures products, such
                   as lattice towers, solar structures, pole towers, and monopole
                   towers. We supply structural components essential for mobile
                   network growth across Pakistan.
                 </p>
-                <p>
-                  We operate a fully equipped, modern Engineering, Tower
-                  Fabrication, and Galvanizing facility with a highly skilled
-                  and trained workforce. We invest in high-tech machinery to
-                  ensure quality for our customers and maintain a conscientious
-                  workforce and QC (Quality Control) procedures at every stage
-                  of the process. This ensures superior quality and structural
-                  reliability.
-                </p>
+                <div className="space-y-4 text-foreground/80 leading-relaxed">
+                  <p>
+                    Matrix Engineering Services specializes in the manufacturing of
+                    <strong> galvanized telecom towers</strong> designed for reliable and
+                    long-term network deployments. Our tower solutions support mobile
+                    operators and tower companies with structures engineered for strength,
+                    stability, and durability.
+                  </p>
+
+                  <p>
+                    We produce self-supporting lattice towers, monopoles, pole towers, and
+                    rooftop tower structures using high-quality steel and controlled
+                    galvanizing processes. Every tower is fabricated with strict quality
+                    checks to ensure corrosion resistance, load compliance triggering,
+                    and performance under diverse environmental conditions across Pakistan.
+                  </p>
+                </div>
+
               </div>
             </div>
 
@@ -58,7 +68,7 @@ const GalvanizedTelecom = () => {
               {/* Responsive container: full width on mobile, capped on md+, fixed aspect */}
               <div className="relative w-full md:max-w-md aspect-[4/3] overflow-hidden rounded-lg">
                 <Image
-                  src="/images/electe.png"
+                  src="/images/telecom-grid.jpg"
                   alt="Building Solution"
                   fill
                   sizes="(min-width: 768px) 28rem, 100vw"
@@ -72,9 +82,9 @@ const GalvanizedTelecom = () => {
           {/* Services Section */}
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold mb-8">
-              Following Services are being offered in our{' '}
-              <span className="text-primary">Fabrication Unit</span>:
+              Our <span className="text-primary">Telecom Tower Fabrication</span> services include:
             </h2>
+
 
             <div className="space-y-4">
               {services.map((service, index) => (
@@ -95,4 +105,4 @@ const GalvanizedTelecom = () => {
   );
 };
 
-export default GalvanizedTelecom;
+export default Towers;

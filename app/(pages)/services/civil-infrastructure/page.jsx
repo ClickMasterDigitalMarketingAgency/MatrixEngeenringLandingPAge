@@ -35,12 +35,12 @@ const sectionVariants = {
       <div className="min-h-screen">
         <main>
           {/* Hero Banner */}
-          <section className="relative h-[250px] md:h-[300px] overflow-hidden">
+          <section className="relative h-[250px] md:h-[450px] overflow-hidden">
             <Image
-              src="/images/telecomInf.png"
+              src="/images/telecom-civil.jpg"
               alt="Telecom Civil Infrastructure Buildout"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[50%_65%]"
               priority
             />
           </section>

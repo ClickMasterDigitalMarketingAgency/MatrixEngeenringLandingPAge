@@ -5,11 +5,11 @@ const Location = () => {
         {/* Section Header - Updated to match the new style */}
         <div className="text-center mb-16 md:mb-20">
           <div className="inline-flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 md:w-12 h-0.5 bg-gradient-to-r from-transparent to-primary" />
+            <div className="w-8 md:w-12 h-0.5 bg-linear-to-r from-transparent to-primary" />
             <span className="text-sm font-semibold text-primary tracking-widest uppercase">
               Find Us
             </span>
-            <div className="w-8 md:w-12 h-0.5 bg-gradient-to-l from-transparent to-primary" />
+            <div className="w-8 md:w-12 h-0.5 bg-linear-to-l from-transparent to-primary" />
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
             Our <span className="text-primary">Headquarter</span>
