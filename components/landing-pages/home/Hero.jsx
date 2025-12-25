@@ -75,10 +75,10 @@ const Hero = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        speed={80}
+        speed={90}
         touchRatio={1.5}
         longSwipesRatio={0.15}
-        longSwipesMs={150}
+        longSwipesMs={250}
         navigation
         className="heroSwiper"
       // ✅ removed onSlideChange (this was replaying the counter)
@@ -95,7 +95,7 @@ const Hero = () => {
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#13161acc] via-[#151d2966] to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-r from-[#13161acc] via-[#151d2966] to-transparent" />
 
               <div className="absolute inset-0 z-10">
                 <div className="container mx-auto px-4 sm:px-6 h-full flex items-center justify-start">
