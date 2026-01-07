@@ -15,6 +15,19 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function Navbar() {
+ 
+  const glowBtn =
+    'text-white hover:text-white bg-transparent hover:bg-white/10 ' +
+    'drop-shadow-[0_0_10px_rgba(59,130,246,0.75)] ' +
+    'hover:drop-shadow-[0_0_16px_rgba(59,130,246,0.95)]';
+
+  const normalBtn =
+    'text-foreground hover:bg-primary hover:text-white';
+
+
+  const ghostWhite = 'text-white hover:bg-white/10 hover:text-white';
+  const ghostNormal = 'text-foreground hover:bg-primary hover:text-white';
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
@@ -28,10 +41,9 @@ export function Navbar() {
   const isActive = (path) => pathname === path;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    handleScroll(); // ✅ set initial state correctly
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -52,6 +64,10 @@ export function Navbar() {
     { label: 'Solar Energy', path: '/services/solar-energy' },
     { label: 'RF Planning and Optimization', path: '/services/rf-planning' },
     { label: 'Buildings and Roads Construction', path: '/services/construction' },
+    { label: 'Towers Construction & Maintenance', path: '/services/towers' },
+    { label: 'SRAN Solution', path: '/services/sran' },
+    { label: 'MORAN', path: '/services/moran' },
+    { label: 'Cell on Wheels (COW)', path: '/services/cow' },
     { label: 'In Building Solution (IBS)', path: '/services/in-building-solution' },
     { label: 'Telecom Civil Infrastructure', path: '/services/civil-infrastructure' },
     { label: 'Logistics and Warehousing', path: '/services/logistics' },
@@ -62,11 +78,12 @@ export function Navbar() {
   ];
 
   const productsItems = [
-    { label: 'Galvanized Towers', path: '/products/towers' },
+    { label: 'Galvanized Towers', path: '/products/galvanized-towers' },
     { label: 'Diesel Generators', path: '/products/generators' },
     { label: 'Solar Power Solutions', path: '/products/solar' },
     { label: 'Cell on Wheel Towers (COW)', path: '/products/cow' },
     { label: 'Telecom Cabinets', path: '/products/cabinets' },
+    { label: 'Towers', path: '/products/towers' },
   ];
 
   const handleMobileLinkClick = () => {
@@ -89,15 +106,7 @@ export function Navbar() {
     open: { opacity: 1, height: 'auto' },
   };
 
-  const dropdownItemVariants = {
-    closed: { opacity: 0, x: -20 },
-    open: { opacity: 1, x: 0 },
-  };
-
-  const staggerVariants = {
-    open: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
-    closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
-  };
+  const transparent = !isScrolled;
 
   return (
     <motion.nav
@@ -105,13 +114,16 @@ export function Navbar() {
       initial="hidden"
       animate="visible"
       variants={navbarVariants}
-      className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-all duration-300 ${
-        isScrolled ? 'shadow-lg' : 'shadow-sm'
-      }`}
+      className={`
+        fixed top-0 left-0 right-0 z-50
+        transition-all duration-300
+        ${isScrolled
+          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-lg'
+          : 'bg-transparent border-transparent shadow-none'}
+      `}
     >
       <div className="max-w-8xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-20">
-
           {/* LOGO */}
           <motion.div>
             <Link href="/" className="flex items-center">
@@ -127,10 +139,10 @@ export function Navbar() {
                 <span className="text-md sm:text-2xl font-bold text-primary block">
                   MATRIX SERVICES
                 </span>
-                {/* <span className="text-base sm:text-xl font-bold text-primary block -mt-1">
-                  SERVICES
-                </span> */}
-                <div className="text-[10px] sm:text-sm -mt-1 text-foreground font-medium">
+                <div
+                  className={`text-[10px] sm:text-sm -mt-1 font-medium ${transparent ? 'text-white/90' : 'text-foreground'
+                    }`}
+                >
                   PVT LIMITED
                 </div>
               </div>
@@ -139,13 +151,32 @@ export function Navbar() {
 
           {/* DESKTOP NAV */}
           <div className="hidden lg:flex items-center space-x-1">
-            <NavLink label="HOME" path="/" isActive={isActive} />
-            <NavLink label="ABOUT US" path="/about" isActive={isActive} />
+            {/* ✅ Glow only on transparent */}
+            <NavLink
+              label="HOME"
+              path="/"
+              isActive={isActive}
+              transparent={transparent}
+              glowBtn={glowBtn}
+              normalBtn={normalBtn}
+            />
+            <NavLink
+              label="ABOUT US"
+              path="/about"
+              isActive={isActive}
+              transparent={transparent}
+              glowBtn={glowBtn}
+              normalBtn={normalBtn}
+            />
 
             {/* SERVICES */}
             <DropdownMenu open={servicesOpen} onOpenChange={setServicesOpen}>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm">
+                <Button
+                  variant="ghost"
+                  className={`text-sm transition-all duration-300 ${transparent ? ghostWhite : ghostNormal
+                    }`}
+                >
                   SERVICES <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -153,10 +184,7 @@ export function Navbar() {
               <DropdownMenuContent className="w-64">
                 {servicesItems.map((item) => (
                   <DropdownMenuItem key={item.path} asChild>
-                    <Link
-                      href={item.path}
-                      onClick={() => setServicesOpen(false)}
-                    >
+                    <Link href={item.path} onClick={() => setServicesOpen(false)}>
                       {item.label}
                     </Link>
                   </DropdownMenuItem>
@@ -167,7 +195,11 @@ export function Navbar() {
             {/* PRODUCTS */}
             <DropdownMenu open={productsOpen} onOpenChange={setProductsOpen}>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm">
+                <Button
+                  variant="ghost"
+                  className={`text-sm transition-all duration-300 ${transparent ? ghostWhite : ghostNormal
+                    }`}
+                >
                   PRODUCTS <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -175,10 +207,7 @@ export function Navbar() {
               <DropdownMenuContent className="w-64">
                 {productsItems.map((item) => (
                   <DropdownMenuItem key={item.path} asChild>
-                    <Link
-                      href={item.path}
-                      onClick={() => setProductsOpen(false)}
-                    >
+                    <Link href={item.path} onClick={() => setProductsOpen(false)}>
                       {item.label}
                     </Link>
                   </DropdownMenuItem>
@@ -186,13 +215,23 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <NavLink label="CONTACT US" path="/contact" isActive={isActive} />
+            <NavLink
+              label="CONTACT US"
+              path="/contact"
+              isActive={isActive}
+              transparent={transparent}
+              glowBtn={glowBtn}
+              normalBtn={normalBtn}
+              forceNoGlow
+            />
           </div>
 
           {/* MOBILE MENU BUTTON */}
           <motion.button
-            className="lg:hidden p-2 rounded-md"
+            className={`lg:hidden p-2 rounded-md transition ${transparent ? 'text-white hover:bg-white/10' : 'text-foreground hover:bg-primary/10'
+              }`}
             onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </motion.button>
@@ -208,11 +247,9 @@ export function Navbar() {
               animate="open"
               exit="closed"
             >
-              {/* MAIN LINKS */}
               <MobileLink label="HOME" path="/" isActive={isActive} onClick={handleMobileLinkClick} />
               <MobileLink label="ABOUT US" path="/about" isActive={isActive} onClick={handleMobileLinkClick} />
 
-              {/* SERVICES DROPDOWN */}
               <MobileDropdown
                 title="SERVICES"
                 open={mobileServicesOpen}
@@ -222,7 +259,6 @@ export function Navbar() {
                 onClick={handleMobileLinkClick}
               />
 
-              {/* PRODUCTS DROPDOWN */}
               <MobileDropdown
                 title="PRODUCTS"
                 open={mobileProductsOpen}
@@ -244,17 +280,17 @@ export function Navbar() {
 
 /* SMALL HELPER COMPONENTS */
 
-function NavLink({ label, path, isActive }) {
+function NavLink({ label, path, isActive, transparent, glowBtn, normalBtn, forceNoGlow }) {
+  const active = isActive(path) ? 'text-primary bg-primary/10' : '';
+
+  // ✅ Only HOME/ABOUT glow when transparent
+  const transparentStyle = forceNoGlow ? 'text-white hover:bg-white/10 hover:text-white' : glowBtn;
+
+  const style = transparent ? transparentStyle : normalBtn;
+
   return (
     <Link href={path}>
-      <Button
-        variant="ghost"
-        className={`px-3 py-2 text-sm ${
-          isActive(path)
-            ? 'text-primary bg-primary/10'
-            : 'hover:bg-primary hover:text-white'
-        }`}
-      >
+      <Button variant="ghost" className={`px-3 py-2 text-sm transition-all duration-300 ${active} ${style}`}>
         {label}
       </Button>
     </Link>
@@ -266,11 +302,8 @@ function MobileLink({ label, path, isActive, onClick }) {
     <Link href={path} onClick={onClick}>
       <Button
         variant="ghost"
-        className={`w-full justify-start px-4 py-3 text-sm ${
-          isActive(path)
-            ? 'text-primary bg-primary/10'
-            : 'hover:bg-primary hover:text-white'
-        }`}
+        className={`w-full justify-start px-4 py-3 text-sm ${isActive(path) ? 'text-primary bg-primary/10' : 'hover:bg-primary hover:text-white'
+          }`}
       >
         {label}
       </Button>
@@ -284,6 +317,7 @@ function MobileDropdown({ title, open, setOpen, items, isActive, onClick }) {
       <button
         className="flex w-full items-center justify-between px-4 py-3 text-sm hover:bg-primary hover:text-white"
         onClick={() => setOpen((prev) => !prev)}
+        type="button"
       >
         {title}
         {open ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
@@ -296,11 +330,8 @@ function MobileDropdown({ title, open, setOpen, items, isActive, onClick }) {
               <Link key={item.path} href={item.path} onClick={onClick}>
                 <Button
                   variant="ghost"
-                  className={`w-full justify-start px-6 py-2 text-xs ${
-                    isActive(item.path)
-                      ? 'text-primary bg-primary/10'
-                      : 'hover:bg-primary hover:text-white'
-                  }`}
+                  className={`w-full justify-start px-6 py-2 text-xs ${isActive(item.path) ? 'text-primary bg-primary/10' : 'hover:bg-primary hover:text-white'
+                    }`}
                 >
                   {item.label}
                 </Button>

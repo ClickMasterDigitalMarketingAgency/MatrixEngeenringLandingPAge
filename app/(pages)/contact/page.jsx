@@ -56,17 +56,17 @@ const Contact = () => {
       desc: '5th floor, Plaza 7, Capital Enclave, Islamabad.',
       email: 'info@matrixes.pk',
       phone: '0332 5220658',
-      img: '/images/isl.png',
+      img: '/images/isb-image.jpg',
       fullInfo: true,
     },
     {
       title: 'Karachi Branch',
-      img: '/images/kch.png',
+      img: '/images/kch-image.jpg',
       fullInfo: false,
     },
     {
       title: 'Lahore Branch',
-      img: '/images/lhr.png',
+      img: '/images/lahore.jpg',
       fullInfo: false,
     },
   ];
@@ -74,7 +74,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/10">
       {/* Hero Section */}
-      <section className="relative w-full h-[300px] md:h-[400px] overflow-hidden">
+      <section className="relative w-full h-[300px] md:h-[450px] overflow-hidden">
         <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -82,33 +82,56 @@ const Contact = () => {
           className="relative w-full h-full"
         >
           <Image
-            src="/images/contactUs.png"
+            src="/images/cow-img.jpg"
             alt="Contact Matrix Engineering"
             fill
-            className="object-cover object-center"
+            className="object-cover  object-[50%_55%]"
             priority
           />
         </motion.div>
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white px-4">
+          <div className="text-center px-4">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="
+      text-4xl md:text-6xl lg:text-7xl font-bold mb-6
+      text-white
+      drop-shadow-[0_0_20px_rgba(255,255,255,0.35)]
+    "
             >
-              Get In <span className="text-primary">Touch</span>
+              Get In{' '}
+              <span
+                className="
+        text-white
+        drop-shadow-[0_0_30px_rgba(59,130,246,0.9)]
+      "
+              >
+                Touch
+              </span>
             </motion.h1>
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto"
+              className="
+  text-lg md:text-xl
+  text-white
+  font-bold
+  max-w-2xl mx-auto
+
+  drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]
+  drop-shadow-[0_0_20px_rgba(59,130,246,0.7)]
+  drop-shadow-[0_0_40px_rgba(59,130,246,0.45)]
+"
             >
               Connect with our team across Pakistan
             </motion.p>
           </div>
+
         </div>
       </section>
 
@@ -142,7 +165,7 @@ const Contact = () => {
                         src={branch.img}
                         alt={branch.title}
                         fill
-                        className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                        className="object-cover  object-[50%_25%] group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                       <div className="absolute bottom-6 left-6 right-6">

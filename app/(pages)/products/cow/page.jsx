@@ -6,9 +6,9 @@ const CellOnWheelTowers = () => {
     <div className="min-h-screen">
       <main>
         {/* Hero Banner */}
-        <section className="relative w-full h-[250px] md:h-[350px] overflow-hidden">
+        <section className="relative w-full h-[250px] md:h-[450px] overflow-hidden">
           <Image
-            src="/images/CellOnWheel.png"
+            src="/images/cow-header.jpg"
             alt="Telecom Equipment Installation"
             fill
             className="object-cover object-center"
@@ -54,13 +54,13 @@ const CellOnWheelTowers = () => {
 
                 <div className="flex justify-center">
                   {/* Responsive container: full width on mobile, capped on md+, fixed aspect */}
-                  <div className="relative w-full md:max-w-md aspect-[4/3] overflow-hidden rounded-lg">
+                  <div className="relative w-full md:max-w-md aspect-4/3 overflow-hidden rounded-lg">
                     <Image
-                      src="/images/WheelTowers.png"
+                      src="/images/cell-tower.jpg"
                       alt="Building Solution"
                       fill
                       sizes="(min-width: 768px) 28rem, 100vw" // md:max-w-md ≈ 448px; adjust if your container differs
-                      className="object-cover object-top"
+                      className="object-cover  object-[50%_75%]"
                       priority
                     />
                   </div>

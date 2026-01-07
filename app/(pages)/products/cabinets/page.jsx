@@ -91,12 +91,12 @@ export default function Cabinets() {
     <div className="min-h-screen">
       <main>
         {/* Hero Section */}
-        <section className="relative w-full h-[300px] overflow-hidden">
+        <section className="relative w-full h-[450px] overflow-hidden">
           <Image
-            src="/images/CabinetsAndCoolingSystems.png"
+            src="/images/cabinets-telecom.jpg"
             alt="Cabinets Hero"
             fill
-            className="object-cover object-center"
+            className="object-cover  object-[50%_25%]"
             priority
           />
           <div className="absolute inset-0 bg-black/40" />
@@ -133,12 +133,12 @@ export default function Cabinets() {
               </div>
 
               <div className="flex justify-center">
-                <div className="relative w-full md:max-w-md aspect-[4/3] rounded-lg overflow-hidden">
-                  <Image
-                    src="/images/Cabinets.png"
+                <div className="relative w-full md:max-w-md aspect-4/3 rounded-lg overflow-hidden">
+                  <img
+                    src="https://i0.wp.com/highrise.com.pk/wp-content/uploads/2022/09/Bending-machine-2.jpg?fit=1440%2C1080&ssl=1"
                     alt="Cabinet Image"
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-bottom"
                   />
                 </div>
               </div>

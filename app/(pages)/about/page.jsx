@@ -1,5 +1,5 @@
 import { ChevronRight } from 'lucide-react';
-
+import Image from 'next/image';
 export default function AboutPage() {
   const services = [
     'Telecom Equipment Installation & Commissioning',
@@ -23,14 +23,30 @@ export default function AboutPage() {
   return (
     <main className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 px-4 border-b border-border">
-        <div className="container mx-auto max-w-5xl">
+      <section className="relative min-h-[70vh] flex items-center px-4 overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/images/about-us.jpg" // 👈 put your image here
+          alt="Matrix Engineering Services"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 container mx-auto max-w-5xl">
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-6xl font-bold text-balance leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight text-white">
               About{' '}
-              <span className="text-primary">Matrix Engineering Services</span>
+              <span className="text-primary">
+                Matrix Engineering Services
+              </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+
+            <p className="text-xl text-white/85 max-w-2xl leading-relaxed">
               A quality-driven, partnership-focused telecom infrastructure
               company delivering end-to-end telecom services across Pakistan.
             </p>
@@ -180,40 +196,16 @@ export default function AboutPage() {
 
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Our duties extend beyond providing mobile communications telecom
-              services in Pakistan. The telecom infrastructure company sector
-              changes quickly, requiring constant readiness to adjust and
-              improve.
+              Building a linked world is about more than just setting up poles and wires. The mobile network market is moving at a fast speed. We stay ready to pivot and find new ways to help our clients keep up.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              At Matrix Engineering Services, we appreciate this work, as it
-              calls for our best efforts in supporting our valuable clients. We
-              are committed to remaining a leading service provider, meeting our
-              customers' operational needs, and benefiting the communities where
-              we operate. We rely on the principles we set for ourselves, our
-              team, and our operating procedures, which are in line with our
-              corporate strategy. These principles remain constant regardless of
-              the different cultures and identities that make up our global
-              community.
+              At <strong>Matrix Engineering</strong>, we use this chance to show our value, working hard to give our partners the high-quality results they need. We aim to stay as a top-tier provider that hears what customers want and cares about the places where we work. We take pride in our roots, our crew, and our way of doing business, which matches our company plan based on shared ideals. These ideals stay true regardless of where we are or who we are working with. These values are Trust, Persistence, and Working Together.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Matrix Engineering Services has played a key role over the years
-              in helping facilitate all related network lifecycle services in
-              Pakistan, including Telecom Civil Infrastructure Buildout, Telecom
-              Equipment Installation and Commissioning Services, and tower
-              fabrication, which is a great point of pride for us.
+              <strong>Matrix Engineering</strong> has done a lot of work over the years to help with all kinds of network tasks; <strong>Civil Works</strong>, <strong>Telecom Equipment Installation</strong>, and <strong>Tower Fabrication</strong>, which are the main things we do well.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We understand that operating today's infrastructure can be
-              complex, and we will continue to face situations that require
-              thoughtful judgment. To address this complexity, our ethical
-              guidelines guide us in making the correct choices as individuals
-              and as a company. Following these guidelines is the duty of
-              everyone at Matrix Engineering Services. By operating with this
-              responsibility, we create a positive impact on our industry, the
-              communities where we work, and build a company we can all stand
-              behind, where corporate accountability provides a distinct
-              advantage.
+              We know that life is not always clear, and we will face tough tasks that do not have easy fixes. In these hard times, our company rules and our way of acting help us stay on the right path as a team. Following these rules is a job for every person who works at  <strong>Matrix Engineering</strong>. By doing this, we help our market, our towns, and build a group we are proud to be part of, where doing the right thing is a key way we stand out.
             </p>
 
             <div className="pt-6 border-t border-border">
@@ -221,7 +213,7 @@ export default function AboutPage() {
                 Kamal Mumtaz,
                 <br />
                 <span className="text-primary">
-                  CEO, Matrix Engineering Services
+                  Matrix Engineering CEO
                 </span>
               </p>
             </div>

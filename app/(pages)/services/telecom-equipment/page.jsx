@@ -27,12 +27,12 @@ const sectionVariants = {
       <div className="min-h-screen">
         <main>
           {/* Hero Banner */}
-          <section className="relative h-[250px] md:h-[300px] overflow-hidden">
+          <section className="relative h-[250px] md:h-[450px] overflow-hidden">
             <Image
-              src="/images/service-banner.png"
+              src="/images/telecom-equipment-installation.jpg"
               alt="Telecom Equipment Installation"
               fill
-              className="object-cover object-center"
+              className="object-cover  object-[50%_35%]"
               priority
             />
           </section>
@@ -43,7 +43,7 @@ const sectionVariants = {
               <div className="max-w-6xl mx-auto">
                 <h2 className="text-3xl md:text-4xl text-primary text-center mb-12">
                   Telecom Equipment <strong>Installation</strong> &{' '}
-                  <strong>Commissioning</strong>Services
+                  <strong>Commissioning</strong>{ " "}Services
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
